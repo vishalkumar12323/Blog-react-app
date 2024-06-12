@@ -21,4 +21,5 @@ const authSlices = createSlice({
 });
 
 export const { login, logout } = authSlices.actions;
+export const authState = (state) => state.status;
 export default authSlices;
