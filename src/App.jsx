@@ -1,11 +1,14 @@
-function App() {
+import { Header, Footer } from "./components";
+
+const App = () => {
   return (
     <>
-      <h1 className="text-4xl bg-green-300 p-2 flex justify-center items-center w-full h-screen">
-        Mega Project Called Blog With Appwriter
-      </h1>
+      <main className="max-w-screen-xl mx-auto">
+        <Header />
+        <Footer />
+      </main>
     </>
   );
-}
+};
 
 export default App;
