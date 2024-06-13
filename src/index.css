@@ -1,11 +1,12 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Snippet&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Snippet&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+.font {
+  font-family: "Snippet", sans-serif;
+}
 .logo {
-  /* font-family: "Snippet", sans-serif; */
-  /* font-weight: 900;
-  font-style: normal; */
-  text-shadow: 1px 1px 1px 1px black;
+  font-weight: 900;
+  font-style: normal;
 }
