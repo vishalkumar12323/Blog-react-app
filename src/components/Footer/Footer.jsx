@@ -1,8 +1,8 @@
 const Footer = () => {
   return (
-    <header className="h-16 flex items-center">
+    <footer className="h-16 w-full mt-auto border">
       <h1 className="text-4xl">Footer Component</h1>
-    </header>
+    </footer>
   );
 };
 

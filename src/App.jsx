@@ -1,12 +1,13 @@
-import { Header, Footer } from "./components";
+import { Header, Footer, Container } from "./components";
 
 const App = () => {
   return (
     <>
-      <main className="max-w-screen-xl mx-auto">
+      <Container>
         <Header />
+
         <Footer />
-      </main>
+      </Container>
     </>
   );
 };
