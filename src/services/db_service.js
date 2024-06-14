@@ -108,6 +108,10 @@ class DatabaseService {
     }
   }
 
+  filePreviewUrl(fileId) {
+    return this.bucket.getFilePreview(config.appwrite_bucket_id, fileId);
+  }
+
   async deleteFile(fileId) {
     try {
       await this.bucket.deleteFile(config.appwrite_bucket_id, fileId);
