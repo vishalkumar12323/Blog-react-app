@@ -6,6 +6,8 @@ import Input from "./Input";
 import Select from "./Select";
 import LoginPage from "./Login";
 import RegisterPage from "./RegisterPage";
+import RTEditor from "./RTEditor";
+import BlogFrom from "./BlogFrom";
 
 export {
   Header,
@@ -16,4 +18,6 @@ export {
   Select,
   LoginPage,
   RegisterPage,
+  RTEditor,
+  BlogFrom,
 };
