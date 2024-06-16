@@ -7,7 +7,7 @@ import Select from "./Select";
 import LoginPage from "./Login";
 import RegisterPage from "./RegisterPage";
 import RTEditor from "./RTEditor";
-import BlogFrom from "./BlogFrom";
+import BlogForm from "./BlogForm";
 
 export {
   Header,
@@ -19,5 +19,5 @@ export {
   LoginPage,
   RegisterPage,
   RTEditor,
-  BlogFrom,
+  BlogForm,
 };

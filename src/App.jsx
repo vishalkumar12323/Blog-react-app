@@ -1,18 +1,11 @@
-import {
-  Header,
-  Footer,
-  Container,
-  LoginPage,
-  RegisterPage,
-} from "./components";
+import { Header, Footer, Container, BlogForm } from "./components";
 
 const App = () => {
   return (
     <>
       <Container>
         <Header />
-        {/* <RegisterPage /> */}
-        <LoginPage />
+        <BlogForm />
         <Footer />
       </Container>
     </>
