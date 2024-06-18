@@ -1,11 +1,12 @@
-import { Header, Footer, Container, BlogForm } from "./components";
+import { Header, Footer, Container } from "./components";
+import { Outlet } from "react-router-dom";
 
 const App = () => {
   return (
     <>
       <Container>
         <Header />
-        <BlogForm />
+        <Outlet />
         <Footer />
       </Container>
     </>

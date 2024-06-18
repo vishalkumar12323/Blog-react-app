@@ -4,11 +4,12 @@ import Button from "./Button";
 import Container from "./Container";
 import Input from "./Input";
 import Select from "./Select";
-import LoginPage from "./Login";
+import Login from "./Login";
 import Signup from "./Signup";
 import RTEditor from "./RTEditor";
 import BlogForm from "./BlogForm";
 import BlogCard from "./BlogCard";
+import Layout from "./Layout";
 
 export {
   Header,
@@ -17,9 +18,10 @@ export {
   Container,
   Input,
   Select,
-  LoginPage,
+  Login,
   Signup,
   RTEditor,
   BlogForm,
   BlogCard,
+  Layout,
 };
