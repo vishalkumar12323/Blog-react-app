@@ -4,7 +4,7 @@ const Button = ({ className, type, children, ...props }) => {
   return (
     <button
       className={clsx(
-        `border-2 shadow active:shadow py-2 px-7 rounded-lg text-[17px] font-normal`,
+        `border-2 active:shadow py-2 px-7 rounded-lg text-[17px] font-normal`,
         className
       )}
       type={type}

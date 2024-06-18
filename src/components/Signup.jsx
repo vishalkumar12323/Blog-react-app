@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Input } from "./index";
 import { useForm } from "react-hook-form";
 
-const RegisterPage = ({}) => {
+const Signup = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
@@ -65,4 +65,4 @@ const RegisterPage = ({}) => {
   );
 };
 
-export default RegisterPage;
+export default Signup;

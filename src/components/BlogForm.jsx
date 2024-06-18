@@ -50,7 +50,11 @@ const BlogForm = ({ post }) => {
 
   const slugTransform = useCallback((value) => {
     if (value && typeof value === "string") {
-      return value.toLowerCase().replace(/ /g, "-");
+      return value
+        .trim()
+        .toLowerCase()
+        .replace(/^[a-zA-Z\d\s]+/g, "-")
+        .replace(/\s/g, "-");
     }
     return "";
   }, []);
@@ -89,13 +93,33 @@ const BlogForm = ({ post }) => {
             label="Article Image"
             type="file"
             accept="image/png, image/jpg, image/jpeg, image/gif"
-            {...register("articleimage", { required: "image is required" })}
+            {...register("articleimage", { required: !post })}
+          />
+          {post && (
+            <div className="w-full mb-3">
+              <img
+                src={db.filePreviewUrl(post.articleimage)}
+                alt={post.title}
+                className="rounded-md"
+              />
+            </div>
+          )}
+
+          <Select
+            label="Status"
+            options={["active", "inactive"]}
+            className="rounded-md"
+            {...register("status", { required: true })}
+          />
+          <RTEditor
+            control={control}
+            defaultValue={getValues("content")}
+            label="Content"
+            name="content"
           />
 
-          {/* <RTEditor control={control} /> */}
-
           <div>
-            <Button type="submit">Submit</Button>
+            <Button type="submit"> {post ? "Update" : "Submit"} </Button>
           </div>
         </form>
       </div>

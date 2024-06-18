@@ -6,7 +6,9 @@ const RTEditor = ({ name, label, control, defaultValue }) => {
   return (
     <>
       <div className="w-full mb-3">
-        {label && <label className="inline-block mb-1 pl-1">{label}</label>}
+        {label && (
+          <label className="inline-block mb-1 pl-1 text-[17px]">{label}</label>
+        )}
         <Controller
           name={name || "content"}
           control={control}

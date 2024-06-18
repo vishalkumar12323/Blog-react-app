@@ -5,9 +5,10 @@ import Container from "./Container";
 import Input from "./Input";
 import Select from "./Select";
 import LoginPage from "./Login";
-import RegisterPage from "./RegisterPage";
+import Signup from "./Signup";
 import RTEditor from "./RTEditor";
 import BlogForm from "./BlogForm";
+import BlogCard from "./BlogCard";
 
 export {
   Header,
@@ -17,7 +18,8 @@ export {
   Input,
   Select,
   LoginPage,
-  RegisterPage,
+  Signup,
   RTEditor,
   BlogForm,
+  BlogCard,
 };

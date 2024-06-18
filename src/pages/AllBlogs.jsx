@@ -1,5 +1,11 @@
+import { BlogCard } from "../components";
+
 const AllBlogs = () => {
-  return <h1>All Blogs Page</h1>;
+  return (
+    <>
+      <BlogCard />
+    </>
+  );
 };
 
 export default AllBlogs;

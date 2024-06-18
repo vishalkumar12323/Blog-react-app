@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { authService } from "../services/auth_service";
 import { Button, Input } from "./index";
 
-const LoginPage = () => {
+const Login = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const [error, setError] = useState(null);
@@ -69,4 +69,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Login;
