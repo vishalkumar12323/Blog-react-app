@@ -4,4 +4,5 @@ export const config = {
   appwrite_database_id: String(import.meta.VITE_APPWRITE_DATABASE_ID),
   appwrite_collection_id: String(import.meta.VITE_APPWRITE_COLLECTION_ID),
   appwrite_bucket_id: String(import.meta.VITE_APPWRITE_BUCKET_ID),
+  tinymce_api_key: String(import.meta.VITE_TINYMCE_API_KEY),
 };

@@ -1,16 +1,18 @@
 import { Editor } from "@tinymce/tinymce-react";
 import { Controller } from "react-hook-form";
+import { config } from "../config/config";
 
 const RTEditor = ({ name, label, control, defaultValue }) => {
   return (
     <>
-      <div className="w-full">
+      <div className="w-full mb-3">
         {label && <label className="inline-block mb-1 pl-1">{label}</label>}
         <Controller
           name={name || "content"}
           control={control}
           render={({ field: { onChange } }) => (
             <Editor
+              apiKey={config.tinymce_api_key}
               initialValue={defaultValue}
               init={{
                 height: 500,
