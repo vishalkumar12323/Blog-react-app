@@ -9,9 +9,9 @@ const Layout = ({ children, isAuthenticated = true }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(isAuthenticated && authStatus !== isAuthenticated);
-    // console.log(authStatus);
     if (isAuthenticated && authState !== isAuthenticated) {
+      navigate("/login");
+    } else if (!isAuthenticated && authState !== isAuthenticated) {
       navigate("/");
     }
   }, [authStatus, navigate, isAuthenticated]);
