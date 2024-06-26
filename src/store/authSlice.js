@@ -1,16 +1,37 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+const initialAuthState = {
   status: false,
-  user: null,
+  user: {
+    id: "",
+    name: "",
+    email: "",
+  },
+};
+
+const initialBlogState = {
+  blogs: [
+    {
+      title: "",
+      content: "",
+      articleimage: "",
+      userid: "",
+      status: "",
+      slug: "",
+    },
+  ],
 };
 const authSlices = createSlice({
   name: "auth",
-  initialState,
+  initialState: initialAuthState,
   reducers: {
     login: (state, action) => {
       state.status = true;
-      state.user = action.payload.user;
+      state.user = {
+        id: action.payload.user?.$id,
+        name: action.payload.user?.name,
+        email: action.payload.user?.email,
+      };
     },
 
     logout: (state) => {
@@ -20,6 +41,21 @@ const authSlices = createSlice({
   },
 });
 
+const blogSlices = createSlice({
+  name: "blog",
+  initialState: initialBlogState,
+  reducers: {
+    addBlog: (state, action) => {
+      const blog = action.payload;
+      state.blogs = [{ ...blog }];
+    },
+    updateBlog: (state, action) => {},
+    deleteBlog: (state, action) => {},
+  },
+});
+
 export const { login, logout } = authSlices.actions;
-export const authState = (state) => state.status;
-export default authSlices;
+export const { addBlog, deleteBlog, updateBlog } = blogSlices.actions;
+export const getAuthState = (state) => state.auth;
+export const getBlogs = (state) => state.blogs;
+export { authSlices, blogSlices };

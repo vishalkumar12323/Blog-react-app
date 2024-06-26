@@ -1,17 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { authState } from "../store/authSlice";
+import { getAuthState } from "../store/authSlice";
 
 const Layout = ({ children, isAuthenticated = true }) => {
-  const [loader, setLoader] = useState(true);
-  const authStatus = useSelector(authState);
+  const authStatus = useSelector(getAuthState);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated && authState !== isAuthenticated) {
+    if (isAuthenticated && authStatus !== isAuthenticated) {
       navigate("/login");
-    } else if (!isAuthenticated && authState !== isAuthenticated) {
+    } else if (!isAuthenticated && authStatus !== isAuthenticated) {
       navigate("/");
     }
   }, [authStatus, navigate, isAuthenticated]);
