@@ -5,7 +5,7 @@ const BlogCard = ({ blogs }) => {
     <>
       {blogs.map((blog) => (
         <div
-          className="max-w-[24rem] p-4 dark:bg-slate-800 rounded-lg shadow-md"
+          className="max-w-[24rem] p-4 bg-gray-50 border border-green-500/75 dark:bg-slate-800 rounded-lg shadow-md"
           key={blog?.slug}
         >
           <a href={`/blog/${blog?.slug}`}>
@@ -20,7 +20,9 @@ const BlogCard = ({ blogs }) => {
                 <p className="mb-1 dark:text-gray-200">{blog?.content}</p>
               </div>
               <div className="px-2">
-                <Button className="capitalize mt-2">read more</Button>
+                <Button className="bg-transparent mt-2 px-4 text-[12px]">
+                  continue reading..
+                </Button>
               </div>
             </div>
           </a>

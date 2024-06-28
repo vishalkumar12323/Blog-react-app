@@ -10,16 +10,16 @@ const Signup = () => {
   };
   return (
     <>
-      <div className="w-full h-[80vh] flex justify-center items-center">
-        <div className="w-[44%] h-auto max-w-[42%] mx-auto rounded-lg shadow-lg p-4 dark:bg-slate-800">
-          <h2 className="py-1 px-2 mb-3 text-2xl">
-            Register to{" "}
-            <span className="font uppercase text-[4xl] font-semibold">
-              blogify
-            </span>
-          </h2>
+      <div className="w-full h-[100vh] flex justify-center items-center">
+        <div className="w-[90%] sm:w-[50%] sm:max-w-[55%] h-auto rounded-lg shadow-lg p-3 dark:bg-slate-800 border border-green-500/75 flex justify-start items-center flex-col">
+          <div className="py-5">
+            <h2 className="px-2 text-3xl text-green-500">Signup</h2>
+          </div>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="mt-1 px-2">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="h-full w-3/4 flex items-center justify-start flex-col"
+          >
             <Input
               label="name"
               type="text"
@@ -29,6 +29,7 @@ const Signup = () => {
                 max: 15,
               })}
               autoComplete="off"
+              className={"py-3 sm:py-4"}
             />
             <Input
               label="email"
@@ -38,6 +39,7 @@ const Signup = () => {
                 required: "please enter valid email",
               })}
               autoComplete="off"
+              className={"py-3 sm:py-4"}
             />
             <Input
               label="password"
@@ -49,13 +51,17 @@ const Signup = () => {
                 required: "please enter a valid password",
               })}
               autoComplete="off"
+              className={"py-3 sm:py-4 md:mb-4"}
             />
 
-            <div className="w-full flex justify-between gap-2 items-center">
+            <div className="w-full flex justify-center gap-2 items-center flex-col">
               <Button type="submit">Register</Button>
-              <p className="text-[13.5px]">
+              <p className="text-[12px] md:text-[16px] text-center">
                 Already have an account?{" "}
-                <a href="/login" className="text-blue-500 hover:underline">
+                <a
+                  href="/login"
+                  className="text-green-500 text-[12px] sm:text-[17px]  hover:underline"
+                >
                   Login instead.
                 </a>{" "}
               </p>

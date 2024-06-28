@@ -8,7 +8,7 @@ const Input = React.forwardRef(function Input(
   const id = useId();
   return (
     <>
-      <div className="w-full mb-1">
+      <div className="w-full mb-4">
         {label && (
           <label htmlFor={id} className="pl-1 capitalize text-[17px]">
             {label}
@@ -18,7 +18,7 @@ const Input = React.forwardRef(function Input(
           id={id}
           type={type}
           className={clsx(
-            `outline-none py-[7px] rounded-md w-full px-2 text-[18px] mb-3 border focus:shadow transition-all dark:text-black`,
+            `outline-none py-2 px-2 text-black w-full border border-green-500/75`,
             className
           )}
           {...props}

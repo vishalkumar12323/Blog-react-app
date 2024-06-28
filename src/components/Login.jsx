@@ -27,41 +27,48 @@ const Login = () => {
   };
   return (
     <>
-      <div className="w-full h-[80vh] flex justify-center items-center">
-        <div className="max-w-[38%] w-[40%] mx-auto rounded-lg shadow-lg h-auto p-4 dark:bg-slate-800">
-          <h2 className="py-1 px-2 mb-3 text-2xl">
-            Login to{" "}
-            <span className="font uppercase text-[4xl] font-semibold">
-              blogify
-            </span>
-          </h2>
-          <form onSubmit={handleSubmit(onSubmit)} className="mt-1 px-2">
+      <div className="w-full h-[100vh] flex justify-center items-center">
+        <div className="w-[90%] sm:w-[50%] sm:max-w-[55%]  mx-auto h-auto rounded-lg shadow-lg p-3 dark:bg-slate-800 border border-green-500/75 flex justify-start items-center flex-col">
+          <div className="py-7">
+            <h2 className="px-2 text-3xl text-green-500">Login</h2>
+          </div>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="px-2 h-full w-3/4 flex items-center justify-start flex-col"
+          >
             <Input
               label="email"
               type="email"
-              placeholder="enter your email..."
+              placeholder="Email"
               autoComplete="off"
               {...register("email", {
                 required: "please enter a valid email.",
               })}
+              className={"py-4"}
             />
             <Input
               label="password"
               type="password"
-              placeholder="enter your password..."
+              placeholder="Password"
               autoComplete="off"
               {...register("password", {
                 min: 8,
                 max: 16,
                 required: "please enter valid password.",
               })}
+              className={"py-4 md:mb-4"}
             />
 
-            <div className="w-full flex justify-between gap-3 items-center">
-              <Button type="submit">Login</Button>
-              <p className="text-[14px]">
+            <div className="w-full flex justify-center gap-3 items-center flex-col">
+              <Button type="submit" className={"text-2xl"}>
+                Login
+              </Button>
+              <p className="text-[12px] sm:text-[16px] text-center">
                 don't have an account,{" "}
-                <a href="#" className="text-blue-500 hover:underline">
+                <a
+                  href="#"
+                  className="text-green-500 text-[12px] sm:text[17px] hover:underline"
+                >
                   click here
                 </a>{" "}
               </p>

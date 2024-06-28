@@ -22,7 +22,10 @@ const Header = () => {
     <header className="font h-[3.5rem] px-8 flex items-center sticky top-0 z-40 w-full backdrop-blur border-b border-slate-900/10 dark:border-slate-50/10 dark:bg-transparent">
       <nav className="flex flex-wrap justify-between w-full">
         <div>
-          <NavLink to="/" className="logo text-3xl font-semibold select-none">
+          <NavLink
+            to="/"
+            className="logo text-3xl text-green-500 font-semibold select-none"
+          >
             BLOGIFY
           </NavLink>
         </div>
@@ -34,9 +37,9 @@ const Header = () => {
                   to={item.url}
                   className={({ isActive }) => {
                     return clsx(
-                      `text-[1.1rem] transition hover:font-semibold`,
+                      `text-[1.1rem] transition hover:text-green-500`,
                       {
-                        "font-semibold": isActive,
+                        "font-normal text-green-500": isActive,
                       }
                     );
                   }}
@@ -66,7 +69,7 @@ const Header = () => {
           )}
           <Button
             onClick={toggleTheme}
-            className="w-0 h-fit border-none shadow-none active:shadow-none py-0 px-0"
+            className="bg-transparent hover:bg-transparent border-none"
           >
             <DarkModeSwitch
               checked={isDarkTheme}
