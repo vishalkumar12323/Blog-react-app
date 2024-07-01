@@ -7,7 +7,11 @@ const Blog = () => {
   useEffect(() => {
     console.log(params);
   }, []);
-  return <h1>Blog Page</h1>;
+  return (
+    <>
+      <h1>Dynamic blogs comes here</h1>
+    </>
+  );
 };
 
 export default Blog;

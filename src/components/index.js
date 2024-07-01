@@ -10,6 +10,7 @@ import RTEditor from "./RTEditor";
 import BlogForm from "./BlogForm";
 import BlogCard from "./BlogCard";
 import Layout from "./Layout";
+import UserProfile from "./UserProfile";
 
 export {
   Header,
@@ -24,4 +25,5 @@ export {
   BlogForm,
   BlogCard,
   Layout,
+  UserProfile,
 };

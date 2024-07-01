@@ -12,7 +12,7 @@ const Home = () => {
     title: "my title",
     content: "my content",
     userId: "my userId",
-    slug: "my slug",
+    slug: "my-only-content",
   };
   useEffect(() => {
     dispatch(addBlog({ ...blogObj }));

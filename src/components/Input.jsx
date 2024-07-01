@@ -18,7 +18,7 @@ const Input = React.forwardRef(function Input(
           id={id}
           type={type}
           className={clsx(
-            `outline-none py-2 px-2 text-black w-full border border-green-500/75`,
+            `outline-none py-2 px-2 text-black dark:text-white w-full border border-green-500/75`,
             className
           )}
           {...props}

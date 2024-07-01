@@ -1,5 +1,11 @@
+import { BlogForm as AddNewBlogForm } from "../components";
+import { useEffect } from "react";
+
 const AddBlog = () => {
-  return <h1>Add Blog Page</h1>;
+  useEffect(() => {
+    console.log("runn...");
+  }, []);
+  return <AddNewBlogForm />;
 };
 
 export default AddBlog;

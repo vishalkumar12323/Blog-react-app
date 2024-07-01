@@ -1,5 +1,3 @@
-import { db } from "../services/db_service";
-import { Button } from "./index";
 const BlogCard = ({ blogs }) => {
   return (
     <>
@@ -19,10 +17,10 @@ const BlogCard = ({ blogs }) => {
                 <h2 className="text-[19px]">{blog?.title}</h2>
                 <p className="mb-1 dark:text-gray-200">{blog?.content}</p>
               </div>
-              <div className="px-2">
-                <Button className="bg-transparent mt-2 px-4 text-[12px]">
-                  continue reading..
-                </Button>
+              <div className="pt-2 px-2">
+                <li className="text-green-500 hover:underline list-none text-[18px]">
+                  continue reading...
+                </li>
               </div>
             </div>
           </a>

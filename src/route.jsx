@@ -21,17 +21,17 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: (
-          // <Layout isAuthenticated={false}>
-          // </Layout>
-          <Login />
+          <Layout isAuthenticated={false}>
+            <Login />
+          </Layout>
         ),
       },
       {
         path: "/signup",
         element: (
-          <Signup />
-          // <Layout isAuthenticated={false}>
-          // </Layout>
+          <Layout isAuthenticated={false}>
+            <Signup />
+          </Layout>
         ),
       },
       {

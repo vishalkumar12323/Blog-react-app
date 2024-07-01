@@ -50,11 +50,7 @@ const BlogForm = ({ post }) => {
 
   const slugTransform = useCallback((value) => {
     if (value && typeof value === "string") {
-      return value
-        .trim()
-        .toLowerCase()
-        .replace(/^[a-zA-Z\d\s]+/g, "-")
-        .replace(/\s/g, "-");
+      return value.trim().toLowerCase().replace(/\s/g, "-");
     }
     return "";
   }, []);
@@ -69,12 +65,13 @@ const BlogForm = ({ post }) => {
   }, [watch, slugTransform, setValue]);
   return (
     <>
-      <div className="w-3/4 mx-auto rounded-lg shadow border p-4">
+      <div className="w-3/4 mx-auto rounded-lg shadow border border-green-500 p-4">
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input
             label="title"
             placeholder="Create blog title"
             {...register("title", { required: "title is required" })}
+            className={"bg-transparent text-black dark:text-white"}
           />
 
           <Input
@@ -87,6 +84,7 @@ const BlogForm = ({ post }) => {
               const { value } = e.currentTarget;
               setValue("slug", slugTransform(value), { shouldValidate: true });
             }}
+            className={"bg-transparent text-black dark:text-white"}
           />
 
           <Input
@@ -94,6 +92,7 @@ const BlogForm = ({ post }) => {
             type="file"
             accept="image/png, image/jpg, image/jpeg, image/gif"
             {...register("articleimage", { required: !post })}
+            className={"bg-transparent text-black dark:text-white"}
           />
           {post && (
             <div className="w-full mb-3">
@@ -108,7 +107,6 @@ const BlogForm = ({ post }) => {
           <Select
             label="Status"
             options={["active", "inactive"]}
-            className="rounded-md"
             {...register("status", { required: true })}
           />
           <RTEditor

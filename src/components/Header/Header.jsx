@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useNavigate, NavLink } from "react-router-dom";
 import { getAuthState } from "../../store/authSlice";
-import { Button } from "../index";
+import { Button, UserProfile } from "../index";
 import { authService } from "../../services/auth_service";
 import { useTheme } from "../../hooks/useTheme";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
@@ -19,7 +19,7 @@ const Header = () => {
     { name: "Signup", active: !authStatus, url: "/signup" },
   ];
   return (
-    <header className="font h-[3.5rem] px-8 flex items-center sticky top-0 z-40 w-full backdrop-blur border-b border-slate-900/10 dark:border-slate-50/10 dark:bg-transparent">
+    <header className="font h-[3.5rem] px-8 flex items-center sticky top-0 z-40 w-full backdrop-blur border-b border-green-500/55 dark:bg-transparent">
       <nav className="flex flex-wrap justify-between w-full">
         <div>
           <NavLink
@@ -51,25 +51,15 @@ const Header = () => {
           )}
         </ul>
 
-        <div className="flex gap-2 items-center justify-center">
+        <div className="flex gap-2 items-center justify-center relative">
           {authStatus && (
             <>
-              <li className="list-none text-[1.2rem]">{user?.name}</li>
-              <Button
-                type="button"
-                className="py-2 px-7 font-medium text-[1.1rem]"
-                onClick={() => {
-                  authService.logout();
-                  navigate("/login");
-                }}
-              >
-                Logout
-              </Button>
+              <UserProfile user={user} />
             </>
           )}
-          <Button
+          <button
             onClick={toggleTheme}
-            className="bg-transparent hover:bg-transparent border-none"
+            className="bg-transparent hover:bg-transparent border-none active:shadow-none"
           >
             <DarkModeSwitch
               checked={isDarkTheme}
@@ -77,7 +67,7 @@ const Header = () => {
               sunColor="white"
               onChange={(checked) => isDarkTheme && checked}
             />
-          </Button>
+          </button>
         </div>
       </nav>
     </header>

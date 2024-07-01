@@ -16,13 +16,17 @@ const Select = ({ label, options, className = "", ...props }, ref) => {
           {...props}
           id={id}
           className={clsx(
-            `outline-none py-[7px] rounded-md w-full px-2 text-[18px] mb-3 border focus:shadow`,
+            `outline-none py-[7px] w-full px-2 bg-transparent text-black dark:text-white text-[18px] mb-3 border border-green-500 focus:shadow`,
             className
           )}
           ref={ref}
         >
           {options?.map((option) => (
-            <option value={option} key={option}>
+            <option
+              value={option}
+              key={option}
+              className="bg-slate-900 text-black dark:text-white"
+            >
               {option}
             </option>
           ))}
