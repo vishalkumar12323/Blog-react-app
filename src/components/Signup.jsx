@@ -1,12 +1,26 @@
 import React from "react";
 import { Button, Input } from "./index";
 import { useForm } from "react-hook-form";
+import { authService } from "../services/auth_service";
+import { login as authLogin } from "../store/authSlice";
+import { useDispatch } from "react-redux";
 
 const Signup = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
+  const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    console.log(data);
+    authService
+      .createAccount({ ...data })
+      .then((user) => {
+        dispatch(authLogin({ user }));
+      })
+      .catch((e) => {
+        console.log(e);
+      })
+      .finally(() => {
+        reset();
+      });
   };
   return (
     <>
@@ -29,6 +43,7 @@ const Signup = () => {
                 max: 15,
               })}
               autoComplete="off"
+              autoFocus
               className={"py-3 sm:py-4"}
             />
             <Input

@@ -1,11 +1,19 @@
 import { useState } from "react";
 import { Button, Input } from "../components";
-import clsx from "clsx";
+import { authService } from "../services/auth_service";
+import { logout } from "../store/authSlice";
+import { useDispatch } from "react-redux";
 
 const UserProfile = ({ user }) => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [isEditable, setIsEditable] = useState(false);
   const [updatedName, setUpdatedName] = useState(user?.name);
+
+  const dispatch = useDispatch();
+
+  // const updateUserName= () => {
+
+  // }
   return (
     <>
       <div className="z-50">
@@ -66,7 +74,15 @@ const UserProfile = ({ user }) => {
                 <li>Email</li>
                 <li className="px-1">vishal@gmail.com</li>
               </div>
-              <Button type="button" className={"mt-2"}>
+              <Button
+                type="button"
+                className={"mt-2"}
+                onClick={() => {
+                  authService.logout();
+                  dispatch(logout());
+                  isMenuVisible(false);
+                }}
+              >
                 Logout
               </Button>
             </ul>

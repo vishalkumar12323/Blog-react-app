@@ -23,7 +23,7 @@ class AuthServices {
 
       if (userAccount) {
         // call to login method for login the user.
-        return this.login(email, password);
+        return await this.login(userAccount.email, userAccount.password);
       } else {
         return userAccount;
       }
@@ -34,7 +34,10 @@ class AuthServices {
 
   async login({ email, password }) {
     try {
-      const user = this.account.createEmailPasswordSession(email, password);
+      const user = await this.account.createEmailPasswordSession(
+        email,
+        password
+      );
       return user;
     } catch (error) {
       throw error;
@@ -44,16 +47,25 @@ class AuthServices {
   async getSession() {
     try {
       const user = await this.account.get();
+      if (!user) return null;
       return user;
     } catch (error) {
       throw error;
     }
-    return null;
   }
 
   async logout() {
     try {
       return await this.account.deleteSession("current");
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async updateUserName(username) {
+    try {
+      const user = await this.account.updateName(username);
+      return user.name;
     } catch (error) {
       throw error;
     }

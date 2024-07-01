@@ -29,9 +29,9 @@ export const router = createBrowserRouter([
       {
         path: "/signup",
         element: (
-          <Layout isAuthenticated={false}>
-            <Signup />
-          </Layout>
+          // <Layout isAuthenticated={false}>
+          // </Layout>
+          <Signup />
         ),
       },
       {

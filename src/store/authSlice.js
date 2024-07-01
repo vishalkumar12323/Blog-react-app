@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialAuthState = {
-  status: true,
+  status: false,
   user: {
-    id: "123",
-    name: "vishal",
-    email: "vishal@gmail.com",
+    id: "",
+    name: "",
+    email: "",
   },
 };
 

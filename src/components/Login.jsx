@@ -11,19 +11,17 @@ const Login = () => {
   const [error, setError] = useState(null);
 
   const onSubmit = async (data) => {
-    // setError(null);
-    console.log(data);
-    // try {
-    //   const session = await authService.login(data);
-    //   if (session) {
-    //     const user = await authService.getSession();
-    //     if (user) {
-    //       dispatch(authLogin(user));
-    //     }
-    //   }
-    // } catch (error) {
-    //   setError(error.message);
-    // }
+    try {
+      const session = await authService.login(data);
+      if (session) {
+        const user = await authService.getSession();
+        if (user) {
+          dispatch(authLogin({ user }));
+        }
+      }
+    } catch (error) {
+      setError(error.message);
+    }
   };
   return (
     <>
@@ -66,7 +64,7 @@ const Login = () => {
               <p className="text-[12px] sm:text-[16px] text-center">
                 don't have an account,{" "}
                 <a
-                  href="#"
+                  href="/signup"
                   className="text-green-500 text-[12px] sm:text[17px] hover:underline"
                 >
                   click here
