@@ -15,10 +15,16 @@ const Signup = () => {
     try {
       const user = await authService.createAccount(data);
       if (user) {
-        dispatch(authLogin({ user }));
+        const userData = {
+          id: user.$id,
+          name: user.name,
+          email: user.email,
+        };
+        dispatch(authLogin(userData));
         reset();
-        navigate("/");
+        console.log(navigate("/"));
       }
+      navigate("/");
     } catch (e) {
       console.log(e);
     }

@@ -27,11 +27,11 @@ const authSlices = createSlice({
   reducers: {
     login: (state, action) => {
       state.status = true;
+
       state.user = {
-        id: action.payload.user?.$id,
-        name: action.payload.user?.name,
-        email: action.payload.user?.email,
+        ...action.payload,
       };
+      console.log({ ...action.payload });
     },
 
     logout: (state) => {

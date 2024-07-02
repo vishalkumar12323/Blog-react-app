@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import AllBlogs from "./AllBlogs";
 
 const Home = () => {
-  const { status } = useSelector(getAuthState);
+  const { status, user } = useSelector(getAuthState);
   const dispatch = useDispatch();
 
   const blogObj = {
@@ -15,6 +15,7 @@ const Home = () => {
     slug: "my-only-content",
   };
   useEffect(() => {
+    // console.log({ status, user });
     dispatch(addBlog({ ...blogObj }));
     // db.getAllBlog()
     //   .then((blog) => blog && setBlog(blog.documents))
@@ -23,7 +24,15 @@ const Home = () => {
   }, []);
   return (
     <>
-      <AllBlogs />
+      {status ? (
+        <AllBlogs />
+      ) : (
+        <div className="w-full h-screen flex justify-center items-center">
+          <h2 className="text-green-500 text-2xl">
+            Please Login or Create new account
+          </h2>
+        </div>
+      )}
     </>
   );
 };

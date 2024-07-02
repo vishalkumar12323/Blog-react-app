@@ -18,20 +18,22 @@ const Login = () => {
       if (session) {
         const user = await authService.getSession();
         if (user) {
-          dispatch(authLogin({ user }));
-          navigate("/");
+          const userData = {
+            id: user.$id,
+            name: user.name,
+            email: user.email,
+          };
+          dispatch(authLogin(userData));
           reset();
+          navigate("/");
         }
       }
     } catch (error) {
+      console.log(error);
       setError(error.message);
       navigate("/login");
     }
   };
-
-  useEffect(() => {
-    console.log(error);
-  }, []);
   return (
     <>
       <div className="w-full h-[100vh] flex justify-center items-center">
@@ -67,9 +69,7 @@ const Login = () => {
             />
 
             <div className="w-full flex justify-center gap-3 items-center flex-col">
-              <Button type="submit" className={"text-2xl"}>
-                Login
-              </Button>
+              <Button type="submit">Login</Button>
               <p className="text-[12px] sm:text-[16px] text-center">
                 don't have an account,{" "}
                 <a

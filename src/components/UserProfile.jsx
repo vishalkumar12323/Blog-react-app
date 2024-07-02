@@ -3,6 +3,7 @@ import { Button, Input } from "../components";
 import { authService } from "../services/auth_service";
 import { logout, getAuthState } from "../store/authSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const UserProfile = () => {
   const { user } = useSelector(getAuthState);
@@ -11,6 +12,7 @@ const UserProfile = () => {
   const [updatedName, setUpdatedName] = useState(user?.name);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // const updateUserName= () => {
 
@@ -86,6 +88,7 @@ const UserProfile = () => {
                   authService.logout();
                   dispatch(logout());
                   setIsMenuVisible(false);
+                  navigate("/login");
                 }}
               >
                 Logout
