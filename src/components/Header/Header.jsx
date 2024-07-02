@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getAuthState } from "../../store/authSlice";
 import { UserProfile } from "../index";
-import { authService } from "../../services/auth_service";
 import { useTheme } from "../../hooks/useTheme";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import clsx from "clsx";
@@ -62,8 +61,8 @@ const Header = () => {
           >
             <DarkModeSwitch
               checked={!isDarkTheme}
-              moonColor="black"
-              sunColor="white"
+              moonColor="white"
+              sunColor="black"
               onChange={(checked) => isDarkTheme && checked}
             />
           </button>

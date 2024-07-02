@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button, Input } from "../components";
 import { authService } from "../services/auth_service";
 import { logout, getAuthState } from "../store/authSlice";
@@ -18,9 +18,6 @@ const UserProfile = () => {
 
   // }
 
-  useEffect(() => {
-    console.log(user);
-  }, []);
   return (
     <>
       <div className="z-50">

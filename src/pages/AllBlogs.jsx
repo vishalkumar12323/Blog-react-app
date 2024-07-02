@@ -7,7 +7,11 @@ const AllBlogs = () => {
   return (
     <>
       <section className="w-full flex gap-5 flex-wrap py-8 px-2 justify-center lg:justify-start">
-        <BlogCard blogs={blogs} />
+        {blogs[0]?.documents ? (
+          <BlogCard blogs={blogs[0].documents} />
+        ) : (
+          <h2>No Any Blog Here</h2>
+        )}
       </section>
     </>
   );

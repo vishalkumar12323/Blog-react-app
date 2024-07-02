@@ -13,9 +13,9 @@ export const useTheme = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   const toggleTheme = () => {
-    setTheme((preTheme) => (preTheme === "light" ? "dark" : "light"));
+    setTheme((preTheme) => (preTheme === "dark" ? "ligth" : "dark"));
     setIsDarkTheme((preIsDarkTheme) => !preIsDarkTheme);
-    localStorage.setItem("theme", isDarkTheme ? "dark" : "light");
+    localStorage.setItem("theme", theme === "dark" ? "light" : "dark");
   };
 
   useEffect(() => {
