@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import { useNavigate, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { getAuthState } from "../../store/authSlice";
-import { Button, UserProfile } from "../index";
+import { UserProfile } from "../index";
 import { authService } from "../../services/auth_service";
 import { useTheme } from "../../hooks/useTheme";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
@@ -9,8 +9,7 @@ import clsx from "clsx";
 
 const Header = () => {
   const { isDarkTheme, toggleTheme } = useTheme();
-  const { status: authStatus, user } = useSelector(getAuthState);
-  const navigate = useNavigate();
+  const { status: authStatus } = useSelector(getAuthState);
   const navItems = [
     { name: "Home", active: true, url: "/" },
     { name: "All Blog", active: authStatus, url: "/all-blogs" },
@@ -54,7 +53,7 @@ const Header = () => {
         <div className="flex gap-2 items-center justify-center relative">
           {authStatus && (
             <>
-              <UserProfile user={user} />
+              <UserProfile />
             </>
           )}
           <button

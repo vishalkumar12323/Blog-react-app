@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { login as authLogin } from "../store/authSlice";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { authService } from "../services/auth_service";
+import { useNavigate } from "react-router-dom";
 import { Button, Input } from "./index";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
+  const { register, handleSubmit, reset } = useForm();
   const [error, setError] = useState(null);
 
   const onSubmit = async (data) => {
@@ -17,12 +19,19 @@ const Login = () => {
         const user = await authService.getSession();
         if (user) {
           dispatch(authLogin({ user }));
+          navigate("/");
+          reset();
         }
       }
     } catch (error) {
       setError(error.message);
+      navigate("/login");
     }
   };
+
+  useEffect(() => {
+    console.log(error);
+  }, []);
   return (
     <>
       <div className="w-full h-[100vh] flex justify-center items-center">
@@ -65,7 +74,7 @@ const Login = () => {
                 don't have an account,{" "}
                 <a
                   href="/signup"
-                  className="text-green-500 text-[12px] sm:text[17px] hover:underline"
+                  className="text-green-500 text-[14px] sm:text[17px] hover:underline"
                 >
                   click here
                 </a>{" "}

@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Input } from "../components";
 import { authService } from "../services/auth_service";
-import { logout } from "../store/authSlice";
-import { useDispatch } from "react-redux";
+import { logout, getAuthState } from "../store/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 
-const UserProfile = ({ user }) => {
+const UserProfile = () => {
+  const { user } = useSelector(getAuthState);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [isEditable, setIsEditable] = useState(false);
   const [updatedName, setUpdatedName] = useState(user?.name);
@@ -14,6 +15,10 @@ const UserProfile = ({ user }) => {
   // const updateUserName= () => {
 
   // }
+
+  useEffect(() => {
+    console.log(user);
+  }, []);
   return (
     <>
       <div className="z-50">
@@ -26,7 +31,7 @@ const UserProfile = ({ user }) => {
           ) : (
             <span className="text-[1.2rem] font-semibold">
               {" "}
-              {user.name.slice(0, 1).toUpperCase()}{" "}
+              {user.name?.slice(0, 1).toUpperCase()}{" "}
             </span>
           )}
         </Button>
@@ -57,7 +62,7 @@ const UserProfile = ({ user }) => {
                       onChange={(e) => setUpdatedName(e.target.value)}
                     />
                   ) : (
-                    <span className="px-1 py-[0.30rem]">{updatedName}</span>
+                    <span className="px-1 py-[0.30rem]">{user.name}</span>
                   )}{" "}
                   <Button
                     type="button"
@@ -72,7 +77,7 @@ const UserProfile = ({ user }) => {
               </div>
               <div>
                 <li>Email</li>
-                <li className="px-1">vishal@gmail.com</li>
+                <li className="px-1">{user.email}</li>
               </div>
               <Button
                 type="button"
@@ -80,7 +85,7 @@ const UserProfile = ({ user }) => {
                 onClick={() => {
                   authService.logout();
                   dispatch(logout());
-                  isMenuVisible(false);
+                  setIsMenuVisible(false);
                 }}
               >
                 Logout

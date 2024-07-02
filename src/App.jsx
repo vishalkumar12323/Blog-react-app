@@ -1,28 +1,27 @@
 import { Header, Footer, Container } from "./components";
 import { Outlet } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { authService } from "./services/auth_service";
-import { login, logout } from "./store/authSlice";
+import { login as authLogin, logout } from "./store/authSlice";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   authService
-  //     .getSession()
-  //     .then((user) => {
-  //       console.log(user);
-  //       if (user) {
-  //         dispatch(login({ user }));
-  //       } else {
-  //         dispatch(logout());
-  //       }
-  //     })
-  //     .catch((e) => console.log(e))
-  //     .finally(() => setIsLoggedIn(true));
-  // }, []);
+  useEffect(() => {
+    authService
+      .getSession()
+      .then((user) => {
+        if (user) {
+          dispatch(authLogin(user));
+        }
+      })
+      .catch((e) => console.log(e))
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
   return (
     <>
       <Header />

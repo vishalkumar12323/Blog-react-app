@@ -22,8 +22,9 @@ class AuthServices {
       );
 
       if (userAccount) {
+        const data = { email, password };
         // call to login method for login the user.
-        return await this.login(userAccount.email, userAccount.password);
+        return await this.login(data);
       } else {
         return userAccount;
       }

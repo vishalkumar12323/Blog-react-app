@@ -3,24 +3,25 @@ import { Button, Input } from "./index";
 import { useForm } from "react-hook-form";
 import { authService } from "../services/auth_service";
 import { login as authLogin } from "../store/authSlice";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 const Signup = () => {
   const { register, handleSubmit, reset } = useForm();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    authService
-      .createAccount({ ...data })
-      .then((user) => {
+  const onSubmit = async (data) => {
+    try {
+      const user = await authService.createAccount(data);
+      if (user) {
         dispatch(authLogin({ user }));
-      })
-      .catch((e) => {
-        console.log(e);
-      })
-      .finally(() => {
         reset();
-      });
+        navigate("/");
+      }
+    } catch (e) {
+      console.log(e);
+    }
   };
   return (
     <>

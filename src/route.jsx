@@ -20,6 +20,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/login",
+
         element: (
           <Layout isAuthenticated={false}>
             <Login />
@@ -29,9 +30,9 @@ export const router = createBrowserRouter([
       {
         path: "/signup",
         element: (
-          // <Layout isAuthenticated={false}>
-          // </Layout>
-          <Signup />
+          <Layout isAuthenticated={false}>
+            <Signup />
+          </Layout>
         ),
       },
       {

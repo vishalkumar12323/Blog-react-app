@@ -21,7 +21,11 @@ const Layout = ({ children, isAuthenticated = true }) => {
         navigate("/");
       }
     } else if (!isAuthenticated && authStatus !== isAuthenticated) {
-      navigate("/login");
+      if (href === "/signup") {
+        navigate("/signup");
+      } else {
+        navigate("/login");
+      }
     }
   }, [authStatus, navigate, isAuthenticated]);
   return <>{children}</>;

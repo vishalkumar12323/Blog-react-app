@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import AllBlogs from "./AllBlogs";
 
 const Home = () => {
-  const authStatus = useSelector(getAuthState);
+  const { status } = useSelector(getAuthState);
   const dispatch = useDispatch();
 
   const blogObj = {
