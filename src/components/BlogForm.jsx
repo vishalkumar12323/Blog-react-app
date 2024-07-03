@@ -16,36 +16,36 @@ const BlogForm = ({ post }) => {
     });
 
   const user = useSelector((state) => state.user);
-  // console.log(user);
   const onSubmit = async (data) => {
-    if (post) {
-      const file = data.image[0] ? await db.uploadFile(data.image[0]) : null;
-      if (file) {
-        await db.deleteFile(post?.articleimage);
-      }
-      const blogPost = await db.updateBlog(post.$id, {
-        ...data,
-        articleimage: file ? file.$id : null,
-      });
+    console.log(data);
+    // if (post) {
+    //   const file = data.image[0] ? await db.uploadFile(data.image[0]) : null;
+    //   if (file) {
+    //     await db.deleteFile(post?.articleimage);
+    //   }
+    //   const blogPost = await db.updateBlog(post.$id, {
+    //     ...data,
+    //     articleimage: file ? file.$id : null,
+    //   });
 
-      if (blogPost) {
-        // navigate user
-        // navigate(`/blog/${blogPost.$id}`)
-      }
-    } else {
-      const file = data.image[0] ? await db.uploadFile(data.image[0]) : null;
-      if (file) {
-        const blogPost = await db.createBlog({
-          ...data,
-          articleimage: file.$id,
-          userid: user?.$id,
-        });
-        if (blogPost) {
-          // navigate user
-          // navigate(`/blog/${blogPost.$id}`)
-        }
-      }
-    }
+    //   if (blogPost) {
+    //     // navigate user
+    //     // navigate(`/blog/${blogPost.$id}`)
+    //   }
+    // } else {
+    //   const file = data.image[0] ? await db.uploadFile(data.image[0]) : null;
+    //   if (file) {
+    //     const blogPost = await db.createBlog({
+    //       ...data,
+    //       articleimage: file.$id,
+    //       userid: user?.$id,
+    //     });
+    //     if (blogPost) {
+    //       // navigate user
+    //       // navigate(`/blog/${blogPost.$id}`)
+    //     }
+    //   }
+    // }
   };
 
   const slugTransform = useCallback((value) => {
@@ -65,7 +65,7 @@ const BlogForm = ({ post }) => {
   }, [watch, slugTransform, setValue]);
   return (
     <>
-      <div className="w-3/4 mx-auto rounded-lg shadow border border-green-500 p-4">
+      <div className="w-3/4 mx-auto rounded-lg shadow border border-green-500/75 p-4 m-4">
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input
             label="title"

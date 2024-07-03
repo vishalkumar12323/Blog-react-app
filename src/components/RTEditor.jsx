@@ -19,6 +19,7 @@ const RTEditor = ({ name, label, control, defaultValue }) => {
               init={{
                 height: 500,
                 menubar: true,
+                theme: "modern",
                 plugins: [
                   "image",
                   "advlist",
@@ -44,7 +45,7 @@ const RTEditor = ({ name, label, control, defaultValue }) => {
                 toolbar:
                   "undo redo | blocks | image | bold italic forecolor | alignleft aligncenter bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat | help",
                 content_style:
-                  "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+                  "body { font-family:Helvetica,Arial,sans-serif; font-size:14px;}",
               }}
               onEditorChange={onChange}
             />

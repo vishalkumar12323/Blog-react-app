@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Layout } from "./components";
+import { Layout, CheckUserOnLineOrOffline } from "./components";
 import Home from "./pages/Home";
 import AddBlog from "./pages/AddBlog";
 import Blog from "./pages/Blog";
@@ -16,55 +16,71 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: (
+          <CheckUserOnLineOrOffline>
+            <Home />
+          </CheckUserOnLineOrOffline>
+        ),
       },
       {
         path: "/login",
 
         element: (
-          <Layout isAuthenticated={false}>
-            <Login />
-          </Layout>
+          <CheckUserOnLineOrOffline>
+            <Layout isAuthenticated={false}>
+              <Login />
+            </Layout>
+          </CheckUserOnLineOrOffline>
         ),
       },
       {
         path: "/signup",
         element: (
-          <Layout isAuthenticated={false}>
-            <Signup />
-          </Layout>
+          <CheckUserOnLineOrOffline>
+            <Layout isAuthenticated={false}>
+              <Signup />
+            </Layout>
+          </CheckUserOnLineOrOffline>
         ),
       },
       {
         path: "/all-blogs",
         element: (
-          <Layout isAuthenticated>
-            <AllBlogs />
-          </Layout>
+          <CheckUserOnLineOrOffline>
+            <Layout isAuthenticated>
+              <AllBlogs />
+            </Layout>
+          </CheckUserOnLineOrOffline>
         ),
       },
       {
         path: "/add-blog",
         element: (
-          <Layout isAuthenticated>
-            <AddBlog />
-          </Layout>
+          <CheckUserOnLineOrOffline>
+            <Layout isAuthenticated>
+              <AddBlog />
+            </Layout>
+          </CheckUserOnLineOrOffline>
         ),
       },
       {
         path: "/blog/:slug",
         element: (
-          <Layout isAuthenticated>
-            <Blog />
-          </Layout>
+          <CheckUserOnLineOrOffline>
+            <Layout isAuthenticated>
+              <Blog />
+            </Layout>
+          </CheckUserOnLineOrOffline>
         ),
       },
       {
         path: "/edit-blog/:slug",
         element: (
-          <Layout isAuthenticated>
-            <EditBlog />
-          </Layout>
+          <CheckUserOnLineOrOffline>
+            <Layout isAuthenticated>
+              <EditBlog />
+            </Layout>
+          </CheckUserOnLineOrOffline>
         ),
       },
     ],
