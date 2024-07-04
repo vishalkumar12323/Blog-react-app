@@ -1,8 +1,10 @@
 import { Input, Button, Select, RTEditor } from "./index";
 import { useForm } from "react-hook-form";
 import { db } from "../services/db_service";
-import { useSelector } from "react-redux";
 import { useCallback, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { getAuthState } from "../store/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const BlogForm = ({ post }) => {
   const { register, handleSubmit, watch, control, setValue, getValues } =
@@ -15,37 +17,42 @@ const BlogForm = ({ post }) => {
       },
     });
 
-  const user = useSelector((state) => state.user);
+  const { user } = useSelector(getAuthState);
+  const navigate = useNavigate();
   const onSubmit = async (data) => {
-    console.log(data);
-    // if (post) {
-    //   const file = data.image[0] ? await db.uploadFile(data.image[0]) : null;
-    //   if (file) {
-    //     await db.deleteFile(post?.articleimage);
-    //   }
-    //   const blogPost = await db.updateBlog(post.$id, {
-    //     ...data,
-    //     articleimage: file ? file.$id : null,
-    //   });
+    // console.log(data.articleimage[0]);
+    if (post) {
+      const file = data.articleimage[0]
+        ? await db.uploadFile(data.articleimage[0])
+        : null;
+      if (file) {
+        await db.deleteFile(post?.articleimage);
+      }
+      const blogPost = await db.updateBlog(post.$id, {
+        ...data,
+        articleimage: file ? file.$id : null,
+      });
 
-    //   if (blogPost) {
-    //     // navigate user
-    //     // navigate(`/blog/${blogPost.$id}`)
-    //   }
-    // } else {
-    //   const file = data.image[0] ? await db.uploadFile(data.image[0]) : null;
-    //   if (file) {
-    //     const blogPost = await db.createBlog({
-    //       ...data,
-    //       articleimage: file.$id,
-    //       userid: user?.$id,
-    //     });
-    //     if (blogPost) {
-    //       // navigate user
-    //       // navigate(`/blog/${blogPost.$id}`)
-    //     }
-    //   }
-    // }
+      if (blogPost) {
+        // navigate user
+        navigate(`/blog/${blogPost.$id}`);
+      }
+    } else {
+      const file = data.articleimage[0]
+        ? await db.uploadFile(data.articleimage[0])
+        : null;
+      if (file) {
+        const blogPost = await db.createBlog({
+          ...data,
+          articleimage: file.$id,
+          userid: user.id,
+        });
+        if (blogPost) {
+          // navigate user
+          navigate(`/blog/${blogPost.$id}`);
+        }
+      }
+    }
   };
 
   const slugTransform = useCallback((value) => {

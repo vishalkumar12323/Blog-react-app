@@ -1,19 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { login as authLogin } from "../store/authSlice";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { authService } from "../services/auth_service";
 import { useNavigate } from "react-router-dom";
-import { Button, Input } from "./index";
+import { Button, Input, Spinner } from "./index";
+import clsx from "clsx";
 
 const Login = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { register, handleSubmit, reset } = useForm();
-  const [error, setError] = useState(null);
 
   const onSubmit = async (data) => {
     try {
+      setLoading(true);
       const session = await authService.login(data);
       if (session) {
         const user = await authService.getSession();
@@ -26,12 +29,14 @@ const Login = () => {
           dispatch(authLogin(userData));
           reset();
           navigate("/");
+          setLoading(false);
         }
       }
     } catch (error) {
       console.log(error);
       setError(error.message);
       navigate("/login");
+      setLoading(false);
     }
   };
   return (
@@ -69,7 +74,16 @@ const Login = () => {
             />
 
             <div className="w-full flex justify-center gap-3 items-center flex-col">
-              <Button type="submit">Login</Button>
+              <Button
+                type="submit"
+                className={clsx(`flex gap-3 justify-center items-center`, {
+                  "cursor-not-allowed hover:bg-green-800": loading,
+                })}
+                disabled={loading}
+              >
+                {" "}
+                {loading && <Spinner width="4" height="4" />} Login
+              </Button>
               <p className="text-[12px] sm:text-[16px] text-center">
                 don't have an account,{" "}
                 <a

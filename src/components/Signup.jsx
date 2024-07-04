@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, Input } from "./index";
+import React, { useState } from "react";
+import { Button, Input, Spinner } from "./index";
 import { useForm } from "react-hook-form";
 import { authService } from "../services/auth_service";
 import { login as authLogin } from "../store/authSlice";
@@ -7,12 +7,14 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 const Signup = () => {
+  const [loading, setLoading] = useState(false);
   const { register, handleSubmit, reset } = useForm();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     try {
+      setLoading(true);
       const user = await authService.createAccount(data);
       if (user) {
         const userData = {
@@ -22,11 +24,12 @@ const Signup = () => {
         };
         dispatch(authLogin(userData));
         reset();
-        console.log(navigate("/"));
+        navigate("/");
+        setLoading(false);
       }
-      navigate("/");
     } catch (e) {
       console.log(e);
+      setLoading(false);
     }
   };
   return (
@@ -77,7 +80,16 @@ const Signup = () => {
             />
 
             <div className="w-full flex justify-center gap-2 items-center flex-col">
-              <Button type="submit">Register</Button>
+              <Button
+                type="submit"
+                className={clsx(`flex gap-3 justify-center items-center`, {
+                  "cursor-not-allowed hover:bg-green-800": loading,
+                })}
+                disabled={loading}
+              >
+                {" "}
+                {loading && <Spinner width="4" height="4" />} Register
+              </Button>
               <p className="text-[12px] md:text-[16px] text-center">
                 Already have an account?{" "}
                 <a

@@ -13,7 +13,7 @@ const Home = () => {
 
   useEffect(() => {
     db.getAllBlog()
-      .then((blog) => (status ? dispatch(addBlog({ ...blog })) : null))
+      .then((blog) => dispatch(addBlog({ ...blog })))
       .catch((e) => {
         console.log(e);
         setError(e.message);

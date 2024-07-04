@@ -1,3 +1,6 @@
+import htmlParser from "html-react-parser";
+import { db } from "../services/db_service";
+
 const BlogCard = ({ blogs }) => {
   return (
     <>
@@ -9,13 +12,15 @@ const BlogCard = ({ blogs }) => {
           <a href={`/blog/${blog?.slug}`}>
             <div className="w-full">
               <img
-                src="/Udemy-certificate.jpg"
+                src={db.filePreviewUrl(blog.articleimage)}
                 className="rounded-sm w-full h-auto"
-                alt="udemy.com"
+                alt={blog.title}
               />
               <div className="mt-2 mb-1 px-2">
                 <h2 className="text-[19px]">{blog?.title}</h2>
-                <p className="mb-1 dark:text-gray-200">{blog?.content} </p>
+                <p className="mb-1 dark:text-gray-200">
+                  {htmlParser(blog?.content)}{" "}
+                </p>
               </div>
               <div className="pt-2 px-2">
                 <li className="text-green-500 hover:underline list-none text-[18px]">
