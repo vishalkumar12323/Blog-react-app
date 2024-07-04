@@ -10,7 +10,9 @@ const getCurrentTheme = () => {
 };
 export const useTheme = () => {
   const [theme, setTheme] = useState(getCurrentTheme());
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(() =>
+    getCurrentTheme() === "dark" ? true : false
+  );
 
   const toggleTheme = () => {
     setTheme((preTheme) => (preTheme === "dark" ? "ligth" : "dark"));

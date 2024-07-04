@@ -19,11 +19,12 @@ class DatabaseService {
       return await this.databases.createDocument(
         config.appwrite_database_id,
         config.appwrite_collection_id,
-        slug,
+        ID.unique(),
         {
           title,
           content,
           articleimage,
+          slug,
           userid,
           status,
         }

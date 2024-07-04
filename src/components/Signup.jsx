@@ -88,7 +88,7 @@ const Signup = () => {
                 disabled={loading}
               >
                 {" "}
-                {loading && <Spinner width="4" height="4" />} Register
+                {loading && <Spinner width="1rem" height="1rem" />} Register
               </Button>
               <p className="text-[12px] md:text-[16px] text-center">
                 Already have an account?{" "}

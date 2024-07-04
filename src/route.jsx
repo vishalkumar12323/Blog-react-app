@@ -64,13 +64,13 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/blog",
+        path: "/blog/:slug",
         element: (
-          // <CheckUserOnLineOrOffline>
-          //   <Layout isAuthenticated>
-          //   </Layout>
-          // </CheckUserOnLineOrOffline>
-          <Blog />
+          <CheckUserOnLineOrOffline>
+            <Layout isAuthenticated>
+              <Blog />
+            </Layout>
+          </CheckUserOnLineOrOffline>
         ),
       },
       {

@@ -82,7 +82,7 @@ const Login = () => {
                 disabled={loading}
               >
                 {" "}
-                {loading && <Spinner width="4" height="4" />} Login
+                {loading && <Spinner width="1rem" height="1rem" />} Login
               </Button>
               <p className="text-[12px] sm:text-[16px] text-center">
                 don't have an account,{" "}

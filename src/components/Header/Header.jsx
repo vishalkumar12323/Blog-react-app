@@ -60,9 +60,9 @@ const Header = () => {
             className="bg-transparent hover:bg-transparent border-none active:shadow-none"
           >
             <DarkModeSwitch
-              checked={!isDarkTheme}
-              moonColor="white"
-              sunColor="black"
+              checked={isDarkTheme}
+              moonColor={isDarkTheme && "white"}
+              sunColor={!isDarkTheme && "black"}
               onChange={(checked) => isDarkTheme && checked}
             />
           </button>
