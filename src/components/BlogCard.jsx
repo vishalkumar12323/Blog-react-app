@@ -19,7 +19,7 @@ const BlogCard = ({ blogs }) => {
               <div className="mt-2 mb-1 px-2">
                 <h2 className="text-[19px]">{blog?.title}</h2>
                 <p className="mb-1 dark:text-gray-200">
-                  {htmlParser(blog?.content)}{" "}
+                  {htmlParser(blog?.content.slice(0, 100))}{" "}
                 </p>
               </div>
               <div className="pt-2 px-2">
