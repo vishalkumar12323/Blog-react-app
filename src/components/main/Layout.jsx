@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useHref, useParams } from "react-router-dom";
-import { getAuthState } from "../store/authSlice";
+import { getAuthState } from "../../store/authSlice";
 
 const Layout = ({ children, isAuthenticated = true }) => {
   const authStatus = useSelector(getAuthState);
