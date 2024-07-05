@@ -1,18 +1,20 @@
-import Header from "./Header/Header";
-import Footer from "./Footer/Footer";
 import Button from "./Button";
-import Container from "./Container";
-import Input from "./Input";
-import Select from "./Select";
-import Login from "./Login";
-import Signup from "./Signup";
-import RTEditor from "./RTEditor";
-import BlogForm from "./BlogForm";
-import BlogCard from "./BlogCard";
-import Layout from "./Layout";
-import UserProfile from "./UserProfile";
-import CheckUserOnLineOrOffline from "./CheckUserOnLineOrOffline";
+import Header from "./header/Header";
+import Footer from "./footer/Footer";
+import Input from "./forms/Input";
+import Select from "./forms/Select";
+import Login from "./forms/Login";
+import Signup from "./forms/Signup";
+import Layout from "./main/Layout";
+import RTEditor from "./forms/RTEditor";
+import BlogForm from "./forms/BlogForm";
+import BlogCard from "./forms/BlogCard";
 import Spinner from "./LoadingSpinner";
+import UserProfile from "./UserProfile";
+import Container from "./main/Container";
+import ErrorBoundary from "./main/ErrorBoundary";
+import NotificationBar from "./main/NotificationBar";
+import CheckUserOnLineOrOffline from "./main/CheckUserOnLineOrOffline";
 
 export {
   Header,
@@ -29,5 +31,6 @@ export {
   Layout,
   UserProfile,
   Spinner,
+  NotificationBar,
   CheckUserOnLineOrOffline,
 };
