@@ -1,6 +1,5 @@
 import htmlParser from "html-react-parser";
-import { db } from "../services/db_service";
-
+import { db } from "../../services/db_service";
 const BlogCard = ({ blogs }) => {
   return (
     <>

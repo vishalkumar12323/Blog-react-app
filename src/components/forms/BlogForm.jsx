@@ -1,9 +1,9 @@
-import { Input, Button, Select, RTEditor } from "./index";
+import { Input, Button, Select, RTEditor } from "../index";
 import { useForm } from "react-hook-form";
-import { db } from "../services/db_service";
+import { db } from "../../services/db_service";
 import { useCallback, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { getAuthState } from "../store/authSlice";
+import { getAuthState } from "../../store/authSlice";
 import { useNavigate } from "react-router-dom";
 
 const BlogForm = ({ post }) => {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Input } from "../components";
+import { Button, Input } from "./index";
 import { authService } from "../services/auth_service";
 import { logout, getAuthState } from "../store/authSlice";
 import { useDispatch, useSelector } from "react-redux";

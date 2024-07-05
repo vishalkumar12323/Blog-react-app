@@ -1,6 +1,6 @@
 import { Editor } from "@tinymce/tinymce-react";
 import { Controller } from "react-hook-form";
-import { config } from "../config/config";
+import { config } from "../../config/config";
 
 const RTEditor = ({ name, label, control, defaultValue }) => {
   return (

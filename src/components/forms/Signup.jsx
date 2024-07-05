@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Button, Input, Spinner } from "./index";
+import { Button, Input, Spinner } from "../index";
 import { useForm } from "react-hook-form";
-import { authService } from "../services/auth_service";
-import { login as authLogin } from "../store/authSlice";
+import { authService } from "../../services/auth_service";
+import { login as authLogin } from "../../store/authSlice";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
