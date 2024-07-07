@@ -14,18 +14,18 @@ class DatabaseService {
     this.bucket = new Storage(this.client);
   }
 
-  async createBlog({ title, content, articleimage, userid, status, slug }) {
+  async createBlog({ heading, content, coverImage, userId, status, slug }) {
     try {
       return await this.databases.createDocument(
         config.appwrite_database_id,
         config.appwrite_collection_id,
         ID.unique(),
         {
-          title,
+          heading,
           content,
-          articleimage,
+          coverImage,
           slug,
-          userid,
+          userId,
           status,
         }
       );
@@ -35,16 +35,16 @@ class DatabaseService {
     }
   }
 
-  async updateBlog(slug, { title, content, articleimage, status }) {
+  async updateBlog(slug, { heading, content, coverImage, status }) {
     try {
       return await this.databases.updateDocument(
         config.appwrite_database_id,
         config.appwrite_collection_id,
         slug,
         {
-          title,
+          heading,
           content,
-          articleimage,
+          coverImage,
           status,
         }
       );
