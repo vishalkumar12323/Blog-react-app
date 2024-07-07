@@ -7,7 +7,6 @@ import EditBlog from "./pages/EditBlog";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import App from "./App";
-import AllBlogs from "./pages/AllBlogs";
 
 export const router = createBrowserRouter([
   {
@@ -44,17 +43,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/all-blogs",
-        element: (
-          <CheckUserOnLineOrOffline>
-            <Layout isAuthenticated>
-              <AllBlogs />
-            </Layout>
-          </CheckUserOnLineOrOffline>
-        ),
-      },
-      {
-        path: "/add-blog",
+        path: "/new-blog",
         element: (
           <CheckUserOnLineOrOffline>
             <Layout isAuthenticated>
@@ -64,7 +53,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/blog/:slug",
+        path: "/blog/:id/:slug",
         element: (
           <CheckUserOnLineOrOffline>
             <Layout isAuthenticated>
@@ -74,7 +63,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/edit-blog/:slug",
+        path: "/edit-blog/:id",
         element: (
           <CheckUserOnLineOrOffline>
             <Layout isAuthenticated>

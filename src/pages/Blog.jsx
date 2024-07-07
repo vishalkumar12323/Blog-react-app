@@ -5,10 +5,11 @@ import { useEffect, useState } from "react";
 
 const Blog = () => {
   const [blog, setBlog] = useState(null);
-  const { slug } = useParams();
+  const params = useParams();
 
   useEffect(() => {
-    db.getBlog(slug)
+    console.log(params);
+    db.getBlog(params.id)
       .then((blog) => {
         console.log(blog);
         blog ? setBlog(blog) : null;

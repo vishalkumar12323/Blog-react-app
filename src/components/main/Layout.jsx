@@ -7,18 +7,20 @@ const Layout = ({ children, isAuthenticated = true }) => {
   const authStatus = useSelector(getAuthState);
   const navigate = useNavigate();
   const href = useHref();
-  const { slug } = useParams();
+  const { id, slug } = useParams();
 
   useEffect(() => {
     if (isAuthenticated && authStatus !== isAuthenticated) {
-      if (href === "/add-blog") {
-        navigate("/add-blog");
-      } else if (href === "/all-blogs") {
-        navigate("/all-blogs");
-      } else if (href === `/blog/${slug}`) {
-        navigate(`/blog/${slug}`);
-      } else {
-        navigate("/");
+      switch (href) {
+        case "/new-blog":
+          navigate("/new-blog");
+          break;
+        case `/blog/${id}/${slug}`:
+          navigate(`/blog/${id}/${slug}`);
+          break;
+        default:
+          navigate("/");
+          break;
       }
     } else if (!isAuthenticated && authStatus !== isAuthenticated) {
       if (href === "/signup") {

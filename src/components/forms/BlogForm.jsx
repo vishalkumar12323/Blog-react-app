@@ -10,7 +10,7 @@ const BlogForm = ({ post }) => {
   const { register, handleSubmit, watch, control, setValue, getValues } =
     useForm({
       defaultValues: {
-        title: post?.title || "",
+        heading: post?.heading || "",
         slug: post?.slug || "",
         content: post?.content || "",
         status: post?.status || "active",
@@ -20,17 +20,17 @@ const BlogForm = ({ post }) => {
   const { user } = useSelector(getAuthState);
   const navigate = useNavigate();
   const onSubmit = async (data) => {
-    // console.log(data.articleimage[0]);
+    // console.log(data.coverImage[0]);
     if (post) {
-      const file = data.articleimage[0]
-        ? await db.uploadFile(data.articleimage[0])
+      const file = data.coverImage[0]
+        ? await db.uploadFile(data.coverImage[0])
         : null;
       if (file) {
-        await db.deleteFile(post?.articleimage);
+        await db.deleteFile(post?.coverImage);
       }
       const blogPost = await db.updateBlog(post.$id, {
         ...data,
-        articleimage: file ? file.$id : null,
+        coverImage: file ? file.$id : null,
       });
 
       if (blogPost) {
@@ -38,18 +38,19 @@ const BlogForm = ({ post }) => {
         navigate(`/blog/${blogPost.$id}`);
       }
     } else {
-      const file = data.articleimage[0]
-        ? await db.uploadFile(data.articleimage[0])
+      const file = data.coverImage[0]
+        ? await db.uploadFile(data.coverImage[0])
         : null;
       if (file) {
         const blogPost = await db.createBlog({
           ...data,
-          articleimage: file.$id,
-          userid: user.id,
+          coverImage: file.$id,
+          userId: user.id,
         });
         if (blogPost) {
           // navigate user
-          navigate(`/blog/${blogPost.$id}`);
+          navigate(`/blog/${blogPost.$id}/${blogPost?.slug}`);
+          console.log("done");
         }
       }
     }
@@ -64,8 +65,10 @@ const BlogForm = ({ post }) => {
 
   useEffect(() => {
     const subscription = watch((value, { name }) => {
-      if (name === "title") {
-        setValue("slug", slugTransform(value.title), { shouldValidate: true });
+      if (name === "heading") {
+        setValue("slug", slugTransform(value.heading), {
+          shouldValidate: true,
+        });
       }
     });
     return () => subscription.unsubscribe();
@@ -75,9 +78,9 @@ const BlogForm = ({ post }) => {
       <div className="w-3/4 mx-auto rounded-lg shadow border border-green-500/75 p-4 m-4">
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input
-            label="title"
-            placeholder="Create blog title"
-            {...register("title", { required: "title is required" })}
+            label="heading"
+            placeholder="Create blog heading"
+            {...register("heading", { required: "heading is required" })}
             className={"bg-transparent text-black dark:text-white"}
           />
 
@@ -95,16 +98,16 @@ const BlogForm = ({ post }) => {
           />
 
           <Input
-            label="Article Image"
+            label="cover image"
             type="file"
             accept="image/png, image/jpg, image/jpeg, image/gif"
-            {...register("articleimage", { required: !post })}
+            {...register("coverImage", { required: !post })}
             className={"bg-transparent text-black dark:text-white"}
           />
           {post && (
             <div className="w-full mb-3">
               <img
-                src={db.filePreviewUrl(post.articleimage)}
+                src={db.filePreviewUrl(post.coverImage)}
                 alt={post.title}
                 className="rounded-md"
               />

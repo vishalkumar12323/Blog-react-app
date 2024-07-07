@@ -10,11 +10,10 @@ const Header = () => {
   const { isDarkTheme, toggleTheme } = useTheme();
   const { status: authStatus } = useSelector(getAuthState);
   const navItems = [
-    { name: "Home", active: true, url: "/" },
-    { name: "All Blog", active: authStatus, url: "/all-blogs" },
-    { name: "Add Blog", active: authStatus, url: "/add-blog" },
-    { name: "Login", active: !authStatus, url: "/login" },
-    { name: "Signup", active: !authStatus, url: "/signup" },
+    { name: "home", active: true, url: "/" },
+    { name: "create blog", active: authStatus, url: "/new-blog" },
+    { name: "login", active: !authStatus, url: "/login" },
+    { name: "signup", active: !authStatus, url: "/signup" },
   ];
   return (
     <header className="font h-[3.5rem] px-8 flex items-center sticky top-0 z-40 w-full backdrop-blur border-b border-green-500/55 dark:bg-transparent">
@@ -35,7 +34,7 @@ const Header = () => {
                   to={item.url}
                   className={({ isActive }) => {
                     return clsx(
-                      `text-[1.1rem] transition hover:text-green-500`,
+                      `text-[1.1rem] capitalize transition hover:text-green-500`,
                       {
                         "font-normal text-green-500": isActive,
                       }
