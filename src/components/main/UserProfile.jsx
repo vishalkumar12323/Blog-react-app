@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Button, Input } from "./index";
-import { authService } from "../services/auth_service";
-import { logout, getAuthState } from "../store/authSlice";
+import { Button, Input } from "../index";
+import { authService } from "../../services/auth_service";
+import { logout, getAuthState } from "../../store/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 

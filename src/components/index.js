@@ -10,11 +10,12 @@ import RTEditor from "./forms/RTEditor";
 import BlogForm from "./forms/BlogForm";
 import BlogCard from "./main/BlogCard";
 import Spinner from "./LoadingSpinner";
-import UserProfile from "./UserProfile";
+import UserProfile from "./main/UserProfile";
 import Container from "./main/Container";
 import ErrorBoundary from "./main/ErrorBoundary";
 import NotificationBar from "./main/NotificationBar";
 import CheckUserOnLineOrOffline from "./main/CheckUserOnLineOrOffline";
+import BlogSlider from "./main/BlogSlider";
 
 export {
   Header,
@@ -32,5 +33,6 @@ export {
   UserProfile,
   Spinner,
   NotificationBar,
+  BlogSlider,
   CheckUserOnLineOrOffline,
 };
