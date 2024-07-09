@@ -34,5 +34,6 @@ export {
   Spinner,
   NotificationBar,
   BlogSlider,
+  ErrorBoundary,
   CheckUserOnLineOrOffline,
 };
