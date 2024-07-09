@@ -30,11 +30,11 @@ const App = () => {
 
   return (
     <>
-      <Header />
       <Container>
+        <Header />
         <Outlet />
+        <Footer />
       </Container>
-      <Footer />
     </>
   );
 };
