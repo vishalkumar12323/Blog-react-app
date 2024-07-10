@@ -42,9 +42,9 @@ const Login = () => {
   return (
     <>
       <div className="w-full h-[100vh] flex justify-center items-center">
-        <div className="w-[90%] sm:w-[50%] sm:max-w-[55%]  mx-auto h-auto rounded-lg shadow-lg p-3 dark:bg-slate-800 border border-green-500/75 flex justify-start items-center flex-col">
+        <div className="w-[80%] sm:w-[50%] sm:max-w-[55%]  mx-auto h-auto rounded-lg shadow-lg p-3 dark:bg-slate-800 border border-lime-500/75 flex justify-start items-center flex-col">
           <div className="py-7">
-            <h2 className="px-2 text-3xl text-green-500">Login</h2>
+            <h2 className="px-2 text-3xl text-lime-500">Login</h2>
           </div>
           <form
             onSubmit={handleSubmit(onSubmit)}

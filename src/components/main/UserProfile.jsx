@@ -23,7 +23,7 @@ const UserProfile = () => {
       <div className="z-50">
         <Button
           onClick={() => setIsMenuVisible((prevState) => !prevState)}
-          className="btn py-[0.30rem] px-[0.80rem] flex justify-center items-center cursor-pointer"
+          className="btn flex justify-center items-center cursor-pointer py-[0.30rem!important] px-[0.80rem!important]"
         >
           {user.profile ? (
             <img src="..." alt="user-profile" className="w-full h-auto" />
@@ -42,7 +42,7 @@ const UserProfile = () => {
           onClick={() => setIsMenuVisible(false)}
         >
           <div
-            className="absolute top-12 right-4 sm:w-60 h-auto border rounded-md border-green-500 z-50 p-3"
+            className="absolute top-12 right-4 sm:w-60 h-auto border rounded-md border-lime-500 z-50 p-3 bg-white/65 dark:bg-slate-800/65"
             onClick={(e) => {
               e.stopPropagation();
             }}
@@ -65,10 +65,10 @@ const UserProfile = () => {
                   )}{" "}
                   <Button
                     type="button"
-                    className="px-[0.70rem] py-[0.30rem] btn"
+                    className="py-[0.55rem] px-[0.95rem] btn"
                     onClick={() => setIsEditable((prevState) => !prevState)}
                   >
-                    <span className="dark:text-white text-black">
+                    <span className="dark:text-white text-black font-medium">
                       {isEditable ? "d" : "e"}
                     </span>
                   </Button>{" "}

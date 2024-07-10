@@ -20,8 +20,8 @@ const Home = () => {
     <>
       <main className="w-full h-[80vh] bg-slate-200/50 dark:bg-slate-800/50 my-4 rounded-sm flex justify-center items-center">
         <div className="w-full">
-          <h1 className="font text-7xl font-semibold text-center text-green-500">
-            <span className="capitalize">start</span> your journy with blogify{" "}
+          <h1 className="font text-7xl font-semibold text-center text-lime-500">
+            <span className="capitalize ">start</span> your journy with blogify{" "}
             <br /> get started now
           </h1>
 
@@ -45,7 +45,7 @@ const Home = () => {
                 <span>June 25, 2024</span>
               </div>
             </div>
-            <div className="hover:text-green-500 transition-colors mt-2">
+            <div className="hover:text-lime-500 transition-colors mt-2">
               <h3 className="text-xl w-fit">The Girl From Ithopia</h3>
               <p className="text-start text-[1.05rem]">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio

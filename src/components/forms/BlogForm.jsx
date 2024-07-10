@@ -75,7 +75,7 @@ const BlogForm = ({ post }) => {
   }, [watch, slugTransform, setValue]);
   return (
     <>
-      <div className="w-3/4 mx-auto rounded-lg shadow border border-green-500/75 p-4 m-4">
+      <div className="w-3/4 mx-auto rounded-lg shadow border border-lime-500/75 p-4 m-4">
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input
             label="heading"

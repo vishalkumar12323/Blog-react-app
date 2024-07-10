@@ -4,7 +4,7 @@ const Button = ({ className, type, children, ...props }) => {
   return (
     <button
       className={clsx(
-        `capitalize py-2 px-8 border border-green-400/75 dark:border-green-500/75 bg-green-500 hover:bg-green-600 hover:shadow-green-400 transition active:shadow  rounded-lg text-[15px]`,
+        `capitalize py-2 px-8 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:shadow-green-400 transition focus:ring-4 focus:ring-lime-300 enabled:hover:bg-gradient-to-br dark:focus:ring-lime-800 active:shadow  rounded-lg font-medium text-[15px]`,
         className
       )}
       type={type}
@@ -16,3 +16,5 @@ const Button = ({ className, type, children, ...props }) => {
 };
 
 export default Button;
+
+// ("items-stretch justify-center p-0.5 text-center  transition-[color,background-color,border-color,text-decoration-color,fill,stroke,box-shadow] focus:z-10 focus:outline-none bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 text-gray-900 focus:ring-4 focus:ring-lime-300 enabled:hover:bg-gradient-to-br dark:focus:ring-lime-800 rounded-lg");
