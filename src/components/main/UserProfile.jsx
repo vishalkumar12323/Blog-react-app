@@ -4,6 +4,7 @@ import { authService } from "../../services/auth_service";
 import { logout, getAuthState } from "../../store/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { MdLogout } from "react-icons/md";
 
 const UserProfile = () => {
   const { user } = useSelector(getAuthState);
@@ -68,7 +69,7 @@ const UserProfile = () => {
                     className="py-[0.55rem] px-[0.95rem] btn"
                     onClick={() => setIsEditable((prevState) => !prevState)}
                   >
-                    <span className="dark:text-white text-black font-medium">
+                    <span className="dark:text-white text-black font-[600]">
                       {isEditable ? "d" : "e"}
                     </span>
                   </Button>{" "}
@@ -80,7 +81,7 @@ const UserProfile = () => {
               </div>
               <Button
                 type="button"
-                className={"mt-2"}
+                className={"mt-2 flex gap-1 items-center font-[600]"}
                 onClick={() => {
                   authService.logout();
                   dispatch(logout());
@@ -88,7 +89,7 @@ const UserProfile = () => {
                   navigate("/login");
                 }}
               >
-                Logout
+                Logout <MdLogout />
               </Button>
             </ul>
           </div>

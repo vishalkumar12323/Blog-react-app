@@ -16,7 +16,7 @@ const Header = () => {
     { name: "signup", active: !authStatus, url: "/signup" },
   ];
   return (
-    <header className="font h-[3.5rem] flex items-center sticky top-0 z-40 w-full backdrop-blur bg-slate-50/30 dark:bg-slate-800/30">
+    <header className="font h-[3.5rem] flex items-center sticky top-0 z-40 w-full backdrop-blur border-b border-lime-500/10">
       <nav className="flex flex-wrap justify-between w-full">
         <div>
           <NavLink

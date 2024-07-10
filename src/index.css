@@ -9,9 +9,6 @@
   box-sizing: border-box;
 }
 
-::selection {
-  background-color: #22c55e;
-}
 .font {
   font-family: "Snippet", sans-serif;
 }

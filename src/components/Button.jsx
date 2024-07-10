@@ -4,7 +4,7 @@ const Button = ({ className, type, children, ...props }) => {
   return (
     <button
       className={clsx(
-        `capitalize py-2 px-8 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:shadow-green-400 transition focus:ring-4 focus:ring-lime-300 enabled:hover:bg-gradient-to-br dark:focus:ring-lime-800 active:shadow  rounded-lg font-medium text-[15px]`,
+        `capitalize py-2 px-6 bg-gradient-to-r from-lime-300 via-lime-400 to-lime-500 hover:shadow-green-400 transition focus:ring-4 focus:ring-lime-300 enabled:hover:bg-gradient-to-br dark:focus:ring-lime-800 active:shadow  rounded-lg font-medium text-[15px]`,
         className
       )}
       type={type}
