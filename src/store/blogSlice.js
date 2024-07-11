@@ -5,6 +5,9 @@ export const fetchBlogs = createAsyncThunk("fetch/blog", async () => {
   return await db.getAllBlog();
 });
 
+export const fetchBlogWithId = createAsyncThunk("fetch/blog/id", async (id) => {
+  return await db.getBlog(id);
+});
 const initialState = {
   isFetching: true,
   documents: [],
@@ -37,7 +40,32 @@ const blogSlices = createSlice({
   },
 });
 
-export const { addBlog, deleteBlog, updateBlog } = blogSlices.actions;
+const getBlogWithId = createSlice({
+  name: "blog/id",
+  initialState: {
+    isFetching: true,
+    document: [],
+    error: null,
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchBlogWithId.pending, (state, action) => {
+      state.isFetching = true;
+      state.document = [];
+      state.error = null;
+    });
+    builder.addCase(fetchBlogWithId.fulfilled, (state, action) => {
+      state.isFetching = false;
+      state.document = action.payload;
+      state.error = null;
+    });
+    builder.addCase(fetchBlogWithId.rejected, (state, action) => {
+      state.isFetching = false;
+      state.document = [];
+      state.total = [];
+      state.error = action.payload.message;
+    });
+  },
+});
 export const getBlogs = (state) => state.blogs;
 
-export { blogSlices };
+export { blogSlices, getBlogWithId };

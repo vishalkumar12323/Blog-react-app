@@ -1,15 +1,15 @@
 import { useEffect } from "react";
-import { db } from "../services/db_service";
 import { Button, Spinner, Blogs } from "../components";
 import { usePagination } from "../hooks";
 import { useSelector, useDispatch } from "react-redux";
-import { addBlog, getBlogs, fetchBlogs } from "../store/blogSlice";
+import { fetchBlogs } from "../store/blogSlice";
 import { getAuthState } from "../store/authSlice";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 const gradientText = `bg-gradient-to-r from-lime-300 via-lime-400 to-lime-500 text-transparent bg-clip-text`;
 const Home = () => {
-  const { isFetching, documents } = useSelector((state) => state.blogs);
+  const { currentPage, onPageChange } = usePagination();
+  const { isFetching, documents, total } = useSelector((state) => state.blogs);
   const { status } = useSelector(getAuthState);
   const dispatch = useDispatch();
 
@@ -49,11 +49,17 @@ const Home = () => {
           <div className="w-full h-full flex justify-center flex-col gap-6 bg-slate-200/50 dark:bg-slate-800/50">
             <Blogs blogs={documents} />
             <div className="w-full mb-4 flex justify-center items-center gap-3">
-              <Button className="px-[15px!important] text-xl">
+              <Button
+                className="px-[15px!important] text-xl"
+                onClick={() => {}}
+              >
                 {" "}
                 <MdChevronLeft />{" "}
               </Button>
-              <Button className="px-[15px!important] text-xl">
+              <Button
+                className="px-[15px!important] text-xl"
+                onClick={() => {}}
+              >
                 {" "}
                 <MdChevronRight />{" "}
               </Button>

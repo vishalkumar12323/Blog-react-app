@@ -1,19 +1,15 @@
 import { useState, useEffect } from "react";
 
 const usePagination = () => {
-  const [page, setPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const onPageChange = (currentPage, totalPages) => {
-    if (
-      currentPage >= 1 &&
-      currentPage <= totalPages / 10 &&
-      currentPage !== page
-    ) {
-      setPage(currentPage);
+  const onPageChange = (page, totalPages) => {
+    if (page >= 1 && page <= totalPages / 10 && page !== currentPage) {
+      setCurrentPage(currentPage);
     }
   };
 
-  return { page, onPageChange };
+  return { currentPage, onPageChange };
 };
 
 export default usePagination;
