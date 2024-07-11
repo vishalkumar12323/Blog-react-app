@@ -4,7 +4,7 @@ const Spinner = ({ width = "2rem", height = "2rem" }) => {
       <svg
         style={{ width, height }}
         aria-hidden="true"
-        className={`inline text-gray-300 animate-spin dark:text-gray-500 fill-green-500`}
+        className={`inline text-gray-300 animate-spin dark:text-gray-500 fill-lime-500`}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

@@ -9,18 +9,6 @@ const initialAuthState = {
   },
 };
 
-const initialBlogState = {
-  blogs: [
-    {
-      title: "",
-      content: "",
-      articleimage: "",
-      userid: "",
-      status: "",
-      slug: "",
-    },
-  ],
-};
 const authSlices = createSlice({
   name: "auth",
   initialState: initialAuthState,
@@ -40,21 +28,8 @@ const authSlices = createSlice({
   },
 });
 
-const blogSlices = createSlice({
-  name: "blog",
-  initialState: initialBlogState,
-  reducers: {
-    addBlog: (state, action) => {
-      const blog = action.payload;
-      state.blogs = [{ ...blog }];
-    },
-    updateBlog: (state, action) => {},
-    deleteBlog: (state, action) => {},
-  },
-});
-
 export const { login, logout } = authSlices.actions;
-export const { addBlog, deleteBlog, updateBlog } = blogSlices.actions;
+
 export const getAuthState = (state) => state.auth;
-export const getBlogs = (state) => state.blogs;
-export { authSlices, blogSlices };
+
+export { authSlices };

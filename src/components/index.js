@@ -11,6 +11,7 @@ import BlogForm from "./forms/BlogForm";
 import Spinner from "./LoadingSpinner";
 import UserProfile from "./main/UserProfile";
 import Container from "./main/Container";
+import Blogs from "./main/Blogs";
 import ErrorBoundary from "./main/ErrorBoundary";
 import NotificationBar from "./main/NotificationBar";
 import CheckUserOnLineOrOffline from "./main/CheckUserOnLineOrOffline";
@@ -24,6 +25,7 @@ export {
   Select,
   Login,
   Signup,
+  Blogs,
   RTEditor,
   BlogForm,
   Layout,

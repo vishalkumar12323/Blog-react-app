@@ -8,7 +8,7 @@ const getCurrentTheme = () => {
     return "light";
   }
 };
-export const useTheme = () => {
+const useTheme = () => {
   const [theme, setTheme] = useState(getCurrentTheme());
   const [isDarkTheme, setIsDarkTheme] = useState(() =>
     getCurrentTheme() === "dark" ? true : false
@@ -32,3 +32,5 @@ export const useTheme = () => {
 
   return { isDarkTheme, toggleTheme };
 };
+
+export default useTheme;

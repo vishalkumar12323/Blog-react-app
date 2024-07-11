@@ -23,8 +23,10 @@ const ErrorBoundary = () => {
     );
   }
   return (
-    <div className="text-4xl text-green-500 capitalize">
-      something went wrong, please try again
+    <div className="w-full h-screen flex justify-center items-center bg-slate-50/40 dark:bg-slate-800">
+      <span className="text-4xl text-green-500 capitalize">
+        something went wrong, please try again
+      </span>
     </div>
   );
 };

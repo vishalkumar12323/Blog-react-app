@@ -1,11 +1,12 @@
 import { Header, Footer, Container } from "./components";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { authService } from "./services/auth_service";
 import { login as authLogin, logout } from "./store/authSlice";
 
 const App = () => {
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -25,7 +26,8 @@ const App = () => {
           dispatch(logout());
         }
       })
-      .catch((e) => console.log(e));
+      .catch((e) => console.log(e))
+      .finally(() => setLoading(false));
   }, []);
 
   return (

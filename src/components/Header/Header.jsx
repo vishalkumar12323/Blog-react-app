@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getAuthState } from "../../store/authSlice";
 import { UserProfile } from "../index";
-import { useTheme } from "../../hooks/useTheme";
+import { useTheme } from "../../hooks";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import clsx from "clsx";
 
