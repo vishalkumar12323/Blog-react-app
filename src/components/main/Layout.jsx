@@ -18,6 +18,8 @@ const Layout = ({ children, isAuthenticated = true }) => {
         case `/blog/${id}/${slug}`:
           navigate(`/blog/${id}/${slug}`);
           break;
+        case `/edit-blog/${id}`:
+          navigate(`/edit-blog/${id}`);
         default:
           navigate("/");
           break;

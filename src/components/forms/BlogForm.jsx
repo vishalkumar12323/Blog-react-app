@@ -7,6 +7,7 @@ import { getAuthState } from "../../store/authSlice";
 import { useNavigate } from "react-router-dom";
 
 const BlogForm = ({ post }) => {
+  console.log(post);
   const { register, handleSubmit, watch, control, setValue, getValues } =
     useForm({
       defaultValues: {
@@ -20,7 +21,6 @@ const BlogForm = ({ post }) => {
   const { user } = useSelector(getAuthState);
   const navigate = useNavigate();
   const onSubmit = async (data) => {
-    // console.log(data.coverImage[0]);
     if (post) {
       const file = data.coverImage[0]
         ? await db.uploadFile(data.coverImage[0])

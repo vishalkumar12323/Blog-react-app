@@ -1,18 +1,27 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../services/db_service";
-import { BlogForm } from "../components";
+import { BlogForm, Spinner } from "../components";
+import { fetchBlogWithId } from "../store/blogSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const EditBlog = () => {
-  const [blog, setBlog] = useState();
+  const { isFetching, document } = useSelector((state) => state.blogWithId);
+  const dispatch = useDispatch();
   const { id } = useParams();
 
   useEffect(() => {
-    db.getBlog(id)
-      .then((blog) => setBlog(blog))
-      .catch((e) => console.log(e));
-  }, []);
-  return <BlogForm post={blog} />;
+    dispatch(fetchBlogWithId(id));
+  }, [id]);
+
+  if (isFetching) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <Spinner />
+      </div>
+    );
+  }
+  return <BlogForm post={document} />;
 };
 
 export default EditBlog;
