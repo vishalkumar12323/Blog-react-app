@@ -1,12 +1,13 @@
 import { db } from "../../services/db_service";
 import { Link } from "react-router-dom";
 import { MdArrowRightAlt } from "react-icons/md";
-const Blogs = ({ blogs }) => {
+const Blogs = ({ blogs, page }) => {
+  console.log(page);
   return (
     <>
-      {blogs.map((b, i) => (
-        <div className="border border-lime-500/20" key={b.slug}>
-          <div>
+      {blogs.slice(page * 5 - 5, page * 5).map((b, i) => (
+        <div className="border border-lime-500/20" key={b.$id}>
+          <div className="w-full h-3/4">
             <img
               src={db.filePreviewUrl(b.coverImage)}
               alt={b.heading}

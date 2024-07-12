@@ -1,15 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-const usePagination = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+const usePagination = (totalPage) => {
+  const [page, setPage] = useState(1);
 
-  const onPageChange = (page, totalPages) => {
-    if (page >= 1 && page <= totalPages / 10 && page !== currentPage) {
-      setCurrentPage(currentPage);
+  const handlePagination = (selectedPage) => {
+    console.log("outside...", { selectedPage, totalPage, page });
+    if (
+      selectedPage >= 1 &&
+      selectedPage <= Math.ceil(totalPage / 5) &&
+      selectedPage !== page
+    ) {
+      console.log("inside...");
+      setPage(selectedPage);
     }
   };
 
-  return { currentPage, onPageChange };
+  return { page, handlePagination };
 };
 
 export default usePagination;

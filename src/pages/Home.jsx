@@ -1,15 +1,14 @@
 import { useEffect } from "react";
-import { Button, Spinner, Blogs } from "../components";
+import { Button, Spinner, Blogs, PaginationButtons } from "../components";
 import { usePagination } from "../hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchBlogs } from "../store/blogSlice";
 import { getAuthState } from "../store/authSlice";
-import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 const gradientText = `bg-gradient-to-r from-lime-300 via-lime-400 to-lime-500 text-transparent bg-clip-text`;
 const Home = () => {
-  const { currentPage, onPageChange } = usePagination();
   const { isFetching, documents, total } = useSelector((state) => state.blogs);
+  const { page, handlePagination } = usePagination(total); // usePagination takes total page length as argument
   const { status } = useSelector(getAuthState);
   const dispatch = useDispatch();
 
@@ -47,23 +46,12 @@ const Home = () => {
       {documents.length > 0 && (
         <section className="max-w-full w-4/5 mx-auto h-auto  mt-4 rounded-sm shadow">
           <div className="w-full h-full flex justify-center flex-col gap-6 bg-slate-200/50 dark:bg-slate-800/50">
-            <Blogs blogs={documents} />
-            <div className="w-full mb-4 flex justify-center items-center gap-3">
-              <Button
-                className="px-[15px!important] text-xl"
-                onClick={() => {}}
-              >
-                {" "}
-                <MdChevronLeft />{" "}
-              </Button>
-              <Button
-                className="px-[15px!important] text-xl"
-                onClick={() => {}}
-              >
-                {" "}
-                <MdChevronRight />{" "}
-              </Button>
-            </div>
+            <Blogs blogs={documents} page={page} />
+            <PaginationButtons
+              page={page}
+              handlePagination={handlePagination}
+              total={total}
+            />
           </div>
         </section>
       )}

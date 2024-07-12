@@ -12,8 +12,9 @@ import Spinner from "./LoadingSpinner";
 import UserProfile from "./main/UserProfile";
 import Container from "./main/Container";
 import Blogs from "./main/Blogs";
-import ErrorBoundary from "./main/ErrorBoundary";
+import ErrorPage from "./main/ErrorPage";
 import NotificationBar from "./main/NotificationBar";
+import PaginationButtons from "./main/PaginationButtons";
 import CheckUserOnLineOrOffline from "./main/CheckUserOnLineOrOffline";
 
 export {
@@ -32,6 +33,7 @@ export {
   UserProfile,
   Spinner,
   NotificationBar,
-  ErrorBoundary,
+  ErrorPage,
+  PaginationButtons,
   CheckUserOnLineOrOffline,
 };
