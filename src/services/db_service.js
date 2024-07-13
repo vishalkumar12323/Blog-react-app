@@ -35,15 +35,16 @@ class DatabaseService {
     }
   }
 
-  async updateBlog(slug, { heading, content, coverImage, status }) {
+  async updateBlog(id, { heading, content, coverImage, status, slug }) {
     try {
       return await this.databases.updateDocument(
         config.appwrite_database_id,
         config.appwrite_collection_id,
-        slug,
+        id,
         {
           heading,
           content,
+          slug,
           coverImage,
           status,
         }
@@ -54,12 +55,12 @@ class DatabaseService {
     }
   }
 
-  async deleteBlog(slug) {
+  async deleteBlog(id) {
     try {
       await this.databases.deleteDocument(
         config.appwrite_database_id,
         config.appwrite_collection_id,
-        slug
+        id
       );
       return true;
     } catch (error) {
@@ -68,12 +69,12 @@ class DatabaseService {
     }
   }
 
-  async getBlog(slug) {
+  async getBlog(id) {
     try {
       const blog = await this.databases.getDocument(
         config.appwrite_database_id,
         config.appwrite_collection_id,
-        slug
+        id
       );
       return blog;
     } catch (error) {

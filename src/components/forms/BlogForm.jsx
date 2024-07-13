@@ -1,12 +1,14 @@
-import { Input, Button, Select, RTEditor } from "../index";
+import { Input, Button, Select, RTEditor, Spinner } from "../index";
 import { useForm } from "react-hook-form";
 import { db } from "../../services/db_service";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getAuthState } from "../../store/authSlice";
 import { useNavigate } from "react-router-dom";
+import clsx from "clsx";
 
 const BlogForm = ({ post }) => {
+  const [loading, setLoading] = useState(false);
   const { register, handleSubmit, watch, control, setValue, getValues } =
     useForm({
       defaultValues: {
@@ -20,6 +22,7 @@ const BlogForm = ({ post }) => {
   const { user } = useSelector(getAuthState);
   const navigate = useNavigate();
   const onSubmit = async (data) => {
+    setLoading(true);
     if (post) {
       const file = data.coverImage[0]
         ? await db.uploadFile(data.coverImage[0])
@@ -34,9 +37,11 @@ const BlogForm = ({ post }) => {
 
       if (blogPost) {
         // navigate user
-        navigate(`/blog/${blogPost.$id}`);
+        setLoading(false);
+        navigate(`/blog/${blogPost?.$id}/${blogPost?.slug}`);
       }
     } else {
+      setLoading(true);
       const file = data.coverImage[0]
         ? await db.uploadFile(data.coverImage[0])
         : null;
@@ -48,8 +53,8 @@ const BlogForm = ({ post }) => {
         });
         if (blogPost) {
           // navigate user
+          setLoading(false);
           navigate(`/blog/${blogPost.$id}/${blogPost?.slug}`);
-          console.log("done");
         }
       }
     }
@@ -126,7 +131,17 @@ const BlogForm = ({ post }) => {
           />
 
           <div>
-            <Button type="submit"> {post ? "Update" : "Submit"} </Button>
+            <Button
+              type="submit"
+              className={clsx(`px-8 py-2 gap-2 text-[17px]`, {
+                "cursor-not-allowed hover:bg-lime-700": loading,
+              })}
+              disable={loading}
+            >
+              {" "}
+              {loading && <Spinner height="1.2rem" width="1.2rem" />}
+              {post ? "Update" : "Submit"}{" "}
+            </Button>
           </div>
         </form>
       </div>

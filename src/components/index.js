@@ -8,7 +8,6 @@ import Signup from "./forms/Signup";
 import Layout from "./main/Layout";
 import RTEditor from "./forms/RTEditor";
 import BlogForm from "./forms/BlogForm";
-import EditBlogForm from "./forms/EditBlogForm";
 import Spinner from "./LoadingSpinner";
 import UserProfile from "./main/UserProfile";
 import Container from "./main/Container";
@@ -35,7 +34,6 @@ export {
   Spinner,
   NotificationBar,
   ErrorPage,
-  EditBlogForm,
   PaginationButtons,
   CheckUserOnLineOrOffline,
 };

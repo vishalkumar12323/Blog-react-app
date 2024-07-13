@@ -76,8 +76,8 @@ const Login = () => {
             <div className="w-full flex justify-center gap-3 items-center flex-col">
               <Button
                 type="submit"
-                className={clsx(`flex gap-3 justify-center items-center`, {
-                  "cursor-not-allowed hover:bg-green-800": loading,
+                className={clsx(`gap-3`, {
+                  "cursor-not-allowed hover:bg-lime-700": loading,
                 })}
                 disabled={loading}
               >
