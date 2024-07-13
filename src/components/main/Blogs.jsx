@@ -1,5 +1,5 @@
 import { db } from "../../services/db_service";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { MdArrowRightAlt } from "react-icons/md";
 const Blogs = ({ blogs, page }) => {
   return (
@@ -36,14 +36,14 @@ const Blogs = ({ blogs, page }) => {
                 <MdArrowRightAlt style={{ marginTop: "7px" }} />
               </Link>
               <div className="flex gap-3 mt-2">
-                <Link
-                  to={`/edit-blog/${b.$id}`}
+                <NavLink
+                  to={`/edit/${b?.$id}/${b?.slug}`}
                   className="visited:text-lime-600"
                 >
                   <span className="text-xl cursor-pointer hover:text-lime-500">
                     edit
                   </span>
-                </Link>
+                </NavLink>
                 <span className="text-xl cursor-pointer hover:text-lime-500">
                   delete
                 </span>

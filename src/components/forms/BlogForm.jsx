@@ -7,7 +7,6 @@ import { getAuthState } from "../../store/authSlice";
 import { useNavigate } from "react-router-dom";
 
 const BlogForm = ({ post }) => {
-  console.log(post);
   const { register, handleSubmit, watch, control, setValue, getValues } =
     useForm({
       defaultValues: {

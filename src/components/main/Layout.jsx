@@ -13,13 +13,14 @@ const Layout = ({ children, isAuthenticated = true }) => {
     if (isAuthenticated && authStatus !== isAuthenticated) {
       switch (href) {
         case "/new-blog":
-          navigate("/new-blog");
+          navigate(href);
           break;
         case `/blog/${id}/${slug}`:
-          navigate(`/blog/${id}/${slug}`);
+          navigate(href);
           break;
-        case `/edit-blog/${id}`:
-          navigate(`/edit-blog/${id}`);
+        case `/edit/${id}/${slug}`:
+          navigate(href);
+          break;
         default:
           navigate("/");
           break;

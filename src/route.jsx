@@ -64,7 +64,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/edit-blog/:id",
+        path: "/edit/:id/:slug",
         element: (
           <CheckUserOnLineOrOffline>
             <Layout isAuthenticated>
