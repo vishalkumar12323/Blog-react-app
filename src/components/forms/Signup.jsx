@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Button, Input, Spinner } from "../index";
 import { useForm } from "react-hook-form";
 import { authService } from "../../services/auth_service";
-import { login as authLogin } from "../../store/authSlice";
+import { getSession } from "../../store/authSlice";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import clsx from "clsx";
 
 const Signup = () => {
   const [loading, setLoading] = useState(false);
@@ -17,12 +18,7 @@ const Signup = () => {
       setLoading(true);
       const user = await authService.createAccount(data);
       if (user) {
-        const userData = {
-          id: user.$id,
-          name: user.name,
-          email: user.email,
-        };
-        dispatch(authLogin(userData));
+        dispatch(getSession());
         reset();
         navigate("/");
         setLoading(false);

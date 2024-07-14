@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { Button, Input } from "../index";
 import { authService } from "../../services/auth_service";
-import { logout, getAuthState } from "../../store/authSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { MdLogout } from "react-icons/md";
 
-const UserProfile = () => {
-  const { user } = useSelector(getAuthState);
+const UserProfile = ({ user }) => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [isEditable, setIsEditable] = useState(false);
   const [updatedName, setUpdatedName] = useState(user?.name);
@@ -83,10 +81,10 @@ const UserProfile = () => {
                 type="button"
                 className={"mt-2 flex gap-1 items-center font-[600]"}
                 onClick={() => {
-                  authService.logout();
-                  dispatch(logout());
-                  setIsMenuVisible(false);
-                  navigate("/login");
+                  // authService.logout();
+                  // dispatch(logout());
+                  // setIsMenuVisible(false);
+                  // navigate("/login");
                 }}
               >
                 Logout <MdLogout />

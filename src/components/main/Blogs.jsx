@@ -1,7 +1,7 @@
 import { db } from "../../services/db_service";
 import { Link, NavLink } from "react-router-dom";
 import { MdArrowRightAlt } from "react-icons/md";
-const Blogs = ({ blogs, page, deleteBlog }) => {
+const Blogs = ({ blogs, page }) => {
   return (
     <>
       {blogs.slice(page * 5 - 5, page * 5).map((b, i) => (

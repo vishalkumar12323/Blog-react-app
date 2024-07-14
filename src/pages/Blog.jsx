@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import htmlParser from "html-react-parser";
-import { NavLink, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { db } from "../services/db_service";
 import { fetchBlogWithId } from "../store/blogSlice";
 import { useSelector, useDispatch } from "react-redux";
@@ -49,17 +49,17 @@ const Blog = () => {
             </span>
           </p>
 
-          <div className="w-[110px] h-[80px] absolute -right-7 bottom-2 rounded shadow-md bg-slate-50/70 dark:bg-slate-800/80 flex flex-col gap-3 mt-2">
+          <div className="w-[110px] h-auto absolute -right-7 bottom-2 rounded shadow-md bg-slate-800/70 dark:bg-slate-50/80 flex flex-col gap-3 mt-2 px-3 py-1">
             <Button
               onClick={() =>
                 navigate(`/edit/${document?.$id}/${document?.slug}`)
               }
-              className=""
+              className="from-blue-500 via-blue-400 to-blue-600"
             >
               <span className="cursor-pointer">edit</span>
             </Button>
             <Button
-              className="cursor-pointer"
+              className="cursor-pointer from-red-500 via-red-400 to-red-600"
               onClick={() => {
                 db.deleteBlog().then((status) => {
                   if (status) {

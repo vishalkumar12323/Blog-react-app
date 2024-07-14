@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { login as authLogin } from "../../store/authSlice";
+import { getSession } from "../../store/authSlice";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { authService } from "../../services/auth_service";
@@ -19,18 +19,8 @@ const Login = () => {
       setLoading(true);
       const session = await authService.login(data);
       if (session) {
-        const user = await authService.getSession();
-        if (user) {
-          const userData = {
-            id: user.$id,
-            name: user.name,
-            email: user.email,
-          };
-          dispatch(authLogin(userData));
-          reset();
-          navigate("/");
-          setLoading(false);
-        }
+        dispatch(getSession());
+        navigate("/");
       }
     } catch (error) {
       console.log(error);

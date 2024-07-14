@@ -1,33 +1,17 @@
 import { Header, Footer, Container } from "./components";
 import { Outlet, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
-import { authService } from "./services/auth_service";
-import { login as authLogin, logout } from "./store/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getSession, session } from "./store/authSlice";
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
+  const { loading, status, user } = useSelector(session);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  console.log({ loading, status, user });
   useEffect(() => {
-    authService
-      .getSession()
-      .then((user) => {
-        if (user) {
-          const userData = {
-            id: user.$id,
-            name: user.name,
-            email: user.email,
-          };
-          dispatch(authLogin(userData));
-          navigate("/");
-        } else {
-          dispatch(logout());
-        }
-      })
-      .catch((e) => console.log(e))
-      .finally(() => setLoading(false));
+    dispatch(getSession());
   }, []);
 
   return (

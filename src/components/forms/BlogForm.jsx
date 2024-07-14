@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { db } from "../../services/db_service";
 import { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { getAuthState } from "../../store/authSlice";
+import { session } from "../../store/authSlice";
 import { useNavigate } from "react-router-dom";
 import clsx from "clsx";
 
@@ -19,7 +19,7 @@ const BlogForm = ({ post }) => {
       },
     });
 
-  const { user } = useSelector(getAuthState);
+  const { user } = useSelector(session);
   const navigate = useNavigate();
   const onSubmit = async (data) => {
     setLoading(true);
