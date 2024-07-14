@@ -1,7 +1,7 @@
 import { db } from "../../services/db_service";
 import { Link, NavLink } from "react-router-dom";
 import { MdArrowRightAlt } from "react-icons/md";
-const Blogs = ({ blogs, page }) => {
+const Blogs = ({ blogs, page, deleteBlog }) => {
   return (
     <>
       {blogs.slice(page * 5 - 5, page * 5).map((b, i) => (
@@ -27,7 +27,7 @@ const Blogs = ({ blogs, page }) => {
                 {b.content?.slice(0, 100)}
               </p>
             </div>
-            <div className="link flex justify-between">
+            <div className="link flex justify-start">
               <Link
                 to={`/blog/${b?.$id}/${b?.slug}`}
                 className="visited:text-lime-600 flex gap-1 items-center w-fit"
@@ -35,19 +35,6 @@ const Blogs = ({ blogs, page }) => {
                 <span className="text-xl cursor-pointer">continue reading</span>{" "}
                 <MdArrowRightAlt style={{ marginTop: "7px" }} />
               </Link>
-              <div className="flex gap-3 mt-2">
-                <NavLink
-                  to={`/edit/${b?.$id}/${b?.slug}`}
-                  className="visited:text-lime-600"
-                >
-                  <span className="text-xl cursor-pointer hover:text-lime-500">
-                    edit
-                  </span>
-                </NavLink>
-                <span className="text-xl cursor-pointer hover:text-lime-500">
-                  delete
-                </span>
-              </div>
             </div>
           </div>
         </div>

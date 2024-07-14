@@ -56,6 +56,7 @@ class DatabaseService {
   }
 
   async deleteBlog(id) {
+    console.log(id);
     try {
       await this.databases.deleteDocument(
         config.appwrite_database_id,
