@@ -32,7 +32,7 @@ const Layout = ({ children, isAuthenticated = true }) => {
         navigate("/login");
       }
     }
-  }, [authStatus, navigate, isAuthenticated]);
+  }, [authStatus, navigate, isAuthenticated, id, slug, href]);
   return <>{children}</>;
 };
 

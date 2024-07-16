@@ -1,7 +1,10 @@
 import clsx from "clsx";
 import React, { useId } from "react";
 
-const Select = ({ label, options, className = "", ...props }, ref) => {
+const Select = React.forwardRef(function Select(
+  { label, options, className = "", ...props },
+  ref
+) {
   const id = useId();
   return (
     <>
@@ -34,6 +37,6 @@ const Select = ({ label, options, className = "", ...props }, ref) => {
       </div>
     </>
   );
-};
+});
 
-export default React.forwardRef(Select);
+export default Select;

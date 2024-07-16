@@ -8,7 +8,7 @@ import clsx from "clsx";
 
 const Header = () => {
   const { isDarkTheme, toggleTheme } = useTheme();
-  const { loading, status: authStatus, user } = useSelector(session);
+  const { status: authStatus, user } = useSelector(session);
   const navItems = [
     { name: "home", active: true, url: "/" },
     { name: "create blog", active: authStatus, url: "/new-blog" },

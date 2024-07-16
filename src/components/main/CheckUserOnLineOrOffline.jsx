@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const CheckUserOnLineOrOffline = ({ children }) => {
   const [isOnLine, setIsOnLine] = useState(navigator.onLine);
@@ -20,7 +20,7 @@ const CheckUserOnLineOrOffline = ({ children }) => {
         children
       ) : (
         <div>
-          oop's &#9785; look like you are offline, please connect to the
+          oop&apos;s &#9785; look like you are offline, please connect to the
           internet
         </div>
       )}

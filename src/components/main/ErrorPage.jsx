@@ -10,7 +10,7 @@ const ErrorPage = () => {
   if (error.status === 401) {
     return (
       <h1 className="text-4xl text-green-500 capitalize">
-        You aren't authorized to see this
+        You aren&apos;t authorized to see this
       </h1>
     );
   }

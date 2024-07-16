@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { getSession } from "../../store/authSlice";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -9,7 +9,6 @@ import clsx from "clsx";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { register, handleSubmit, reset } = useForm();
@@ -21,10 +20,10 @@ const Login = () => {
       if (session) {
         dispatch(getSession());
         navigate("/");
+        reset();
       }
     } catch (error) {
       console.log(error);
-      setError(error.message);
       navigate("/login");
       setLoading(false);
     }
@@ -73,17 +72,16 @@ const Login = () => {
                 })}
                 disabled={loading}
               >
-                {" "}
                 {loading && <Spinner width="1rem" height="1rem" />} Login
               </Button>
               <p className="text-[12px] sm:text-[16px] text-center">
-                don't have an account,{" "}
+                don't have an account,
                 <a
                   href="/signup"
                   className="bg-gradient-to-br from-pink-500 to-orange-400 text-transparent bg-clip-text text-[14px] sm:text[17px] hover:underline"
                 >
                   click here
-                </a>{" "}
+                </a>
               </p>
             </div>
           </form>

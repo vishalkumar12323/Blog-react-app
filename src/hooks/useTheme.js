@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 const getCurrentTheme = () => {
   const theme = localStorage.getItem("theme");
@@ -14,11 +14,11 @@ const useTheme = () => {
     getCurrentTheme() === "dark" ? true : false
   );
 
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     setTheme((preTheme) => (preTheme === "dark" ? "ligth" : "dark"));
     setIsDarkTheme((preIsDarkTheme) => !preIsDarkTheme);
     localStorage.setItem("theme", theme === "dark" ? "light" : "dark");
-  };
+  }, [theme]);
 
   useEffect(() => {
     if (theme === "dark") {
@@ -28,7 +28,7 @@ const useTheme = () => {
       document.body.classList.remove("dark");
       document.body.classList.add(theme);
     }
-  }, [theme, toggleTheme]);
+  }, [theme]);
 
   return { isDarkTheme, toggleTheme };
 };

@@ -1,10 +1,10 @@
 import { db } from "../../services/db_service";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MdArrowRightAlt } from "react-icons/md";
 const Blogs = ({ blogs, page }) => {
   return (
     <>
-      {blogs.slice(page * 5 - 5, page * 5).map((b, i) => (
+      {blogs.slice(page * 5 - 5, page * 5).map((b) => (
         <div className="border border-lime-500/20" key={b.$id}>
           <div className="w-full h-3/4">
             <img
