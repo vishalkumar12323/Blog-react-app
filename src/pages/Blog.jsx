@@ -13,7 +13,7 @@ const Blog = () => {
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(fetchBlogWithId(id));
-  }, [id]);
+  }, [id, dispatch]);
 
   if (isFetching) {
     return (

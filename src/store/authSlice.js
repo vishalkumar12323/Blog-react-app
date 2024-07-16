@@ -19,7 +19,7 @@ const authSlices = createSlice({
   name: "auth",
   initialState: initialAuthState,
   reducers: {
-    logout: (state, action) => {
+    logout: (state) => {
       state.loading = false;
       state.status = false;
       state.user = null;
@@ -46,7 +46,7 @@ const authSlices = createSlice({
         email: action.payload.email,
       };
     });
-    builder.addCase(getSession.rejected, (state, action) => {
+    builder.addCase(getSession.rejected, (state) => {
       state.loading = false;
       state.status = false;
       state.user = {

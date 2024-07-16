@@ -17,7 +17,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(fetchBlogs());
-  }, []);
+  }, [dispatch]);
 
   if (isFetching) {
     return (

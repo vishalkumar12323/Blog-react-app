@@ -11,7 +11,7 @@ const EditBlog = () => {
 
   useEffect(() => {
     dispatch(fetchBlogWithId(id));
-  }, [id]);
+  }, [id, dispatch]);
 
   if (isFetching) {
     return (

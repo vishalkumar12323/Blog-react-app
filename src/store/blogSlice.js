@@ -19,7 +19,7 @@ const blogSlices = createSlice({
   name: "blog",
   initialState,
   extraReducers: (builder) => {
-    builder.addCase(fetchBlogs.pending, (state, action) => {
+    builder.addCase(fetchBlogs.pending, (state) => {
       state.isFetching = true;
       state.documents = [];
       state.total = 0;
@@ -48,7 +48,7 @@ const getBlogWithId = createSlice({
     error: null,
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchBlogWithId.pending, (state, action) => {
+    builder.addCase(fetchBlogWithId.pending, (state) => {
       state.isFetching = true;
       state.document = [];
       state.error = null;

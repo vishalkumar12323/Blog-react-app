@@ -39,7 +39,7 @@ const NotificationBar = () => {
         <button onClick={addNotification}>add notification</button>
       </div>
       <div className="absolute top-4 right-2">
-        {notifications.map((notification, index) => (
+        {notifications.map((notification) => (
           <div
             key={notification.id}
             className={`notification bg-red-500 text-white px-4 py-2 rounded-md shadow-md z-50 flex justify-between items-center gap-3 duration-500 transition-transform ${

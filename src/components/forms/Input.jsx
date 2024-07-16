@@ -18,7 +18,7 @@ const Input = React.forwardRef(function Input(
           id={id}
           type={type}
           className={clsx(
-            `outline-none py-2 px-2 text-black w-full bg-transparent border border-pink-500 to-orange-500 focus:bg-gradient-to-br focus:from-pink-100 focus:to-orange-100 transition-all`,
+            `outline-none py-2 px-2 text-black dark:text-white w-full bg-transparent border border-pink-500 to-orange-500 transition-all`,
             className
           )}
           autoComplete={autoComplete}

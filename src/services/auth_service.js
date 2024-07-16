@@ -13,63 +13,40 @@ class AuthServices {
   }
 
   async createAccount({ name, email, password }) {
-    try {
-      const userAccount = await this.account.create(
-        ID.unique(),
-        email,
-        password,
-        name
-      );
+    const userAccount = await this.account.create(
+      ID.unique(),
+      email,
+      password,
+      name
+    );
 
-      if (userAccount) {
-        const data = { email, password };
-        // call to login method for login the user.
-        return await this.login(data);
-      } else {
-        return userAccount;
-      }
-    } catch (error) {
-      throw error;
+    if (userAccount) {
+      const data = { email, password };
+      // call to login method for login the user.
+      return await this.login(data);
+    } else {
+      return userAccount;
     }
   }
 
   async login({ email, password }) {
-    try {
-      const user = await this.account.createEmailPasswordSession(
-        email,
-        password
-      );
-      return user;
-    } catch (error) {
-      throw error;
-    }
+    const user = await this.account.createEmailPasswordSession(email, password);
+    return user;
   }
 
   async getSession() {
-    try {
-      const user = await this.account.get();
-      if (!user) return null;
-      return user;
-    } catch (error) {
-      throw error;
-    }
+    const user = await this.account.get();
+    if (!user) return null;
+    return user;
   }
 
   async logout() {
-    try {
-      return await this.account.deleteSession("current");
-    } catch (error) {
-      throw error;
-    }
+    return await this.account.deleteSession("current");
   }
 
   async updateUserName(username) {
-    try {
-      const user = await this.account.updateName(username);
-      return user.name;
-    } catch (error) {
-      throw error;
-    }
+    const user = await this.account.updateName(username);
+    return user.name;
   }
 }
 
