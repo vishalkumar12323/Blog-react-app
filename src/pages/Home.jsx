@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Button, Spinner, Blogs, PaginationButtons } from "../components";
 import { usePagination } from "../hooks";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { fetchBlogs } from "../store/blogSlice";
 import { session } from "../store/authSlice";
 
@@ -14,6 +15,7 @@ const Home = () => {
   const { status } = useSelector(session);
   const { page, handlePagination } = usePagination(totalPages); // usePagination takes total page length as argument
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchBlogs());
@@ -47,8 +49,8 @@ const Home = () => {
             </h1>
 
             <div className="w-full flex gap-4 justify-center mt-8">
-              <Button>get started</Button>
-              <Button>signup</Button>
+              <Button onClick={() => navigate("/signup")}>get started</Button>
+              <Button onClick={() => navigate("/login")}>signup</Button>
             </div>
           </div>
         </main>

@@ -3,7 +3,7 @@ import { Button, Input, Spinner } from "../index";
 import { useForm } from "react-hook-form";
 import { authService } from "../../services/auth_service";
 import { getSession } from "../../store/authSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import clsx from "clsx";
 
@@ -90,12 +90,12 @@ const Signup = () => {
               </Button>
               <p className="text-[12px] md:text-[16px] text-center">
                 Already have an account?{" "}
-                <a
-                  href="/login"
+                <Link
+                  to="/login"
                   className="bg-gradient-to-br from-pink-500 to-orange-400 text-transparent bg-clip-text text-[12px] sm:text-[17px]  hover:underline"
                 >
                   Login instead.
-                </a>{" "}
+                </Link>{" "}
               </p>
             </div>
           </form>

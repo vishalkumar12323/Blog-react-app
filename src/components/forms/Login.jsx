@@ -3,7 +3,7 @@ import { getSession } from "../../store/authSlice";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { authService } from "../../services/auth_service";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button, Input, Spinner } from "../index";
 import clsx from "clsx";
 
@@ -74,14 +74,14 @@ const Login = () => {
               >
                 {loading && <Spinner width="1rem" height="1rem" />} Login
               </Button>
-              <p className="text-[12px] sm:text-[16px] text-center">
+              <p className="text-[17px] md:text-[16px] text-center">
                 don't have an account,
-                <a
-                  href="/signup"
-                  className="bg-gradient-to-br from-pink-500 to-orange-400 text-transparent bg-clip-text text-[14px] sm:text[17px] hover:underline"
+                <Link
+                  to="/signup"
+                  className="bg-gradient-to-br from-pink-500 to-orange-400 text-transparent bg-clip-text text-[17px] sm:text[17px] hover:underline"
                 >
                   click here
-                </a>
+                </Link>
               </p>
             </div>
           </form>
