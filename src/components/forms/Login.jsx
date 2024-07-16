@@ -32,9 +32,11 @@ const Login = () => {
   return (
     <>
       <div className="w-full h-[100vh] flex justify-center items-center">
-        <div className="w-[80%] sm:w-[50%] sm:max-w-[50%]  mx-auto h-auto rounded-lg shadow-lg p-3 dark:bg-slate-800 border border-lime-500/75 flex justify-start items-center flex-col">
+        <div className="w-[80%] sm:w-[50%] sm:max-w-[50%]  mx-auto h-auto rounded-lg shadow-lg p-3 dark:bg-slate-800 border border-pink-500 to-orange-500 flex justify-start items-center flex-col">
           <div className="py-7">
-            <h2 className="px-2 text-3xl text-lime-500">Login</h2>
+            <h2 className="px-2 text-3xl bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl text-transparent bg-clip-text">
+              Login
+            </h2>
           </div>
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -78,7 +80,7 @@ const Login = () => {
                 don't have an account,{" "}
                 <a
                   href="/signup"
-                  className="text-green-500 text-[14px] sm:text[17px] hover:underline"
+                  className="bg-gradient-to-br from-pink-500 to-orange-400 text-transparent bg-clip-text text-[14px] sm:text[17px] hover:underline"
                 >
                   click here
                 </a>{" "}

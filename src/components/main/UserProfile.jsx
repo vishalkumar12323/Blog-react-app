@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Input } from "../index";
 import { authService } from "../../services/auth_service";
+import { logout } from "../../store/authSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { MdLogout } from "react-icons/md";
@@ -22,7 +23,7 @@ const UserProfile = ({ user }) => {
       <div className="z-50">
         <Button
           onClick={() => setIsMenuVisible((prevState) => !prevState)}
-          className="btn flex justify-center items-center cursor-pointer py-[0.30rem!important] px-[0.80rem!important]"
+          className="btn flex justify-center items-center cursor-pointer py-[0.54rem!important] px-[0.80rem!important]"
         >
           {user.profile ? (
             <img src="..." alt="user-profile" className="w-full h-auto" />
@@ -81,10 +82,10 @@ const UserProfile = ({ user }) => {
                 type="button"
                 className={"mt-2 flex gap-1 items-center font-[600]"}
                 onClick={() => {
-                  // authService.logout();
-                  // dispatch(logout());
-                  // setIsMenuVisible(false);
-                  // navigate("/login");
+                  authService.logout();
+                  dispatch(logout());
+                  setIsMenuVisible(false);
+                  navigate("/login");
                 }}
               >
                 Logout <MdLogout />

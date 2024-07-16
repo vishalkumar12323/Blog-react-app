@@ -4,7 +4,7 @@ const Button = ({ className, type, children, ...props }) => {
   return (
     <button
       className={clsx(
-        `flex justify-center items-center capitalize py-2 px-6 bg-gradient-to-r from-lime-300 via-lime-400 to-lime-500 hover:shadow-green-400 transition focus:ring-4 focus:ring-lime-300 enabled:hover:bg-gradient-to-br dark:focus:ring-lime-800 active:shadow  rounded-lg font-medium text-[15px]`,
+        `flex justify-center items-center capitalize py-2 px-6 text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800  text-sm  text-center me-2 mb-2active:shadow  rounded-lg font-medium text-[15px]`,
         className
       )}
       type={type}

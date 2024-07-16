@@ -79,13 +79,13 @@ const BlogForm = ({ post }) => {
   }, [watch, slugTransform, setValue]);
   return (
     <>
-      <div className="w-3/4 mx-auto rounded-lg shadow border border-lime-500/75 p-4 m-4">
+      <div className="w-3/4 mx-auto rounded-lg shadow border border-pink-500 to-orange-500 p-4 m-4">
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input
             label="heading"
             placeholder="Create blog heading"
             {...register("heading", { required: "heading is required" })}
-            className={"bg-transparent text-black dark:text-white"}
+            className={"bg-transparent text-black"}
           />
 
           <Input
@@ -98,7 +98,7 @@ const BlogForm = ({ post }) => {
               const { value } = e.currentTarget;
               setValue("slug", slugTransform(value), { shouldValidate: true });
             }}
-            className={"bg-transparent text-black dark:text-white"}
+            className={"bg-transparent text-black"}
           />
 
           <Input
@@ -106,7 +106,7 @@ const BlogForm = ({ post }) => {
             type="file"
             accept="image/png, image/jpg, image/jpeg, image/gif"
             {...register("coverImage", { required: !post })}
-            className={"bg-transparent text-black dark:text-white"}
+            className={"text-black dark:text-white"}
           />
           {post && (
             <div className="w-full mb-3">

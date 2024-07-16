@@ -44,7 +44,7 @@ const Blog = () => {
         <div className="px-4 py-2 relative">
           <p className="text-[16px] capitalize">
             publiced by:{" "}
-            <span className="capitalize text-[15px] text-green-500">
+            <span className="capitalize text-[15px] text-orange-500 font-medium">
               adam bob
             </span>
           </p>
@@ -54,12 +54,10 @@ const Blog = () => {
               onClick={() =>
                 navigate(`/edit/${document?.$id}/${document?.slug}`)
               }
-              className="from-blue-500 via-blue-400 to-blue-600"
             >
               <span className="cursor-pointer">edit</span>
             </Button>
             <Button
-              className="cursor-pointer from-red-500 via-red-400 to-red-600"
               onClick={() => {
                 db.deleteBlog().then((status) => {
                   if (status) {

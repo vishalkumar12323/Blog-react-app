@@ -16,7 +16,7 @@ const Select = ({ label, options, className = "", ...props }, ref) => {
           {...props}
           id={id}
           className={clsx(
-            `outline-none py-[7px] w-full px-2 bg-transparent text-black dark:text-white text-[18px] mb-3 border border-green-500 focus:shadow`,
+            `outline-none py-[7px] w-full px-2 bg-transparent text-black dark:text-white text-[18px] mb-3 border border-pink-500 to-orange-500 focus:shadow`,
             className
           )}
           ref={ref}

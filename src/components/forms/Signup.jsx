@@ -31,9 +31,11 @@ const Signup = () => {
   return (
     <>
       <div className="w-full h-[100vh] flex justify-center items-center">
-        <div className="w-[90%] sm:w-[50%] sm:max-w-[55%] h-auto rounded-lg shadow-lg p-3 dark:bg-slate-800 border border-lime-500/75 flex justify-start items-center flex-col">
+        <div className="w-[90%] sm:w-[50%] sm:max-w-[55%] h-auto rounded-lg shadow-lg p-3 dark:bg-slate-800 border border-pink-500 to-orange-500 flex justify-start items-center flex-col">
           <div className="py-5">
-            <h2 className="px-2 text-3xl text-lime-500">Signup</h2>
+            <h2 className="px-2 text-3xl bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl text-transparent bg-clip-text">
+              Signup
+            </h2>
           </div>
 
           <form
@@ -90,7 +92,7 @@ const Signup = () => {
                 Already have an account?{" "}
                 <a
                   href="/login"
-                  className="text-green-500 text-[12px] sm:text-[17px]  hover:underline"
+                  className="bg-gradient-to-br from-pink-500 to-orange-400 text-transparent bg-clip-text text-[12px] sm:text-[17px]  hover:underline"
                 >
                   Login instead.
                 </a>{" "}

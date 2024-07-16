@@ -35,7 +35,7 @@ const blogSlices = createSlice({
       state.isFetching = false;
       state.documents = [];
       state.total = [];
-      state.error = action.payload.message;
+      state.error = action.payload?.message;
     });
   },
 });
@@ -62,7 +62,7 @@ const getBlogWithId = createSlice({
       state.isFetching = false;
       state.document = [];
       state.total = [];
-      state.error = action.payload.message;
+      state.error = action.payload?.message;
     });
   },
 });

@@ -21,9 +21,9 @@ const Header = () => {
         <div>
           <NavLink
             to="/"
-            className="logo text-3xl text-lime-500 font-semibold select-none"
+            className="logo text-3xl bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl text-transparent bg-clip-text font-semibold select-none"
           >
-            BLOGIFY
+            W.Lab
           </NavLink>
         </div>
         <ul className="flex items-center justify-center gap-5 flex-wrap ">
@@ -34,9 +34,9 @@ const Header = () => {
                   to={item.url}
                   className={({ isActive }) => {
                     return clsx(
-                      `text-[1.1rem] capitalize transition hover:text-lime-600`,
+                      `text-[1.1rem] capitalize transition hover:text-orange-600`,
                       {
-                        "font-normal text-lime-500": isActive,
+                        "font-normal text-orange-500": isActive,
                       }
                     );
                   }}

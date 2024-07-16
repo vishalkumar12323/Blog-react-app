@@ -30,7 +30,7 @@ const Blogs = ({ blogs, page }) => {
             <div className="link flex justify-start">
               <Link
                 to={`/blog/${b?.$id}/${b?.slug}`}
-                className="visited:text-lime-600 flex gap-1 items-center w-fit"
+                className="visited:text-pink-500/80 flex gap-1 items-center w-fit"
               >
                 <span className="text-xl cursor-pointer">continue reading</span>{" "}
                 <MdArrowRightAlt style={{ marginTop: "7px" }} />
