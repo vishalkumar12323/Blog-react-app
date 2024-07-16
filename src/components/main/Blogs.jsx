@@ -5,7 +5,7 @@ const Blogs = ({ blogs, page }) => {
   return (
     <>
       {blogs.slice(page * 5 - 5, page * 5).map((b) => (
-        <div className="border border-lime-500/20" key={b.$id}>
+        <div className="border border-pink-500/40 to-orange-500/40" key={b.$id}>
           <div className="w-full h-3/4">
             <img
               src={db.filePreviewUrl(b.coverImage)}
