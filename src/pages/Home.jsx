@@ -57,7 +57,7 @@ const Home = () => {
       )}
 
       {documents.length > 0 && (
-        <section className="max-w-full w-4/5 mx-auto h-auto  mt-4 rounded-sm shadow">
+        <section className="max-w-full w-4/5 mx-auto h-auto my-8 rounded-sm shadow">
           <div className="w-full h-full flex justify-center flex-col gap-6 bg-slate-200/50 dark:bg-slate-800/50">
             <Blogs blogs={documents} page={page} />
             <PaginationButtons

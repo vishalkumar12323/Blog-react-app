@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { session } from "../../store/authSlice";
 import { UserProfile } from "../index";
 import { useTheme } from "../../hooks";
@@ -16,15 +16,15 @@ const Header = () => {
     { name: "signup", active: !authStatus, url: "/signup" },
   ];
   return (
-    <header className="font h-[3.5rem] flex items-center sticky top-0 z-40 w-full backdrop-blur border-b border-lime-500/10">
+    <header className="font h-[3.5rem] flex items-center sticky top-0 z-40 w-full backdrop-blur border-b border-pink-500/10">
       <nav className="flex flex-wrap justify-between w-full">
         <div>
-          <NavLink
+          <Link
             to="/"
             className="logo text-3xl bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl text-transparent bg-clip-text font-semibold select-none"
           >
             W.Lab
-          </NavLink>
+          </Link>
         </div>
         <ul className="flex items-center justify-center gap-5 flex-wrap ">
           {navItems.map((item) =>
