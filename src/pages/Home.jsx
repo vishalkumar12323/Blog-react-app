@@ -1,5 +1,10 @@
 import { useEffect } from "react";
-import { Button, Spinner, Blogs, PaginationButtons } from "../components";
+import {
+  DefaultButton,
+  Spinner,
+  Blogs,
+  PaginationButtons,
+} from "../components";
 import { usePagination } from "../hooks";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -49,15 +54,19 @@ const Home = () => {
             </h1>
 
             <div className="w-full flex gap-4 justify-center mt-8">
-              <Button onClick={() => navigate("/signup")}>get started</Button>
-              <Button onClick={() => navigate("/login")}>signup</Button>
+              <DefaultButton onClick={() => navigate("/signup")}>
+                get started
+              </DefaultButton>
+              <DefaultButton onClick={() => navigate("/login")}>
+                signup
+              </DefaultButton>
             </div>
           </div>
         </main>
       )}
 
       {documents.length > 0 && (
-        <section className="max-w-full w-4/5 mx-auto h-auto my-8 rounded-sm shadow">
+        <section className="max-w-full w-4/5 mx-auto h-auto my-7 rounded-sm shadow">
           <div className="w-full h-full flex justify-center flex-col gap-6 bg-slate-200/50 dark:bg-slate-800/50">
             <Blogs blogs={documents} page={page} />
             <PaginationButtons

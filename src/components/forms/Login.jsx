@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { authService } from "../../services/auth_service";
 import { Link, useNavigate } from "react-router-dom";
-import { Button, Input, Spinner } from "../index";
+import { DefaultButton, Input, Spinner } from "../index";
 import clsx from "clsx";
 
 const Login = () => {
@@ -65,7 +65,7 @@ const Login = () => {
             />
 
             <div className="w-full flex justify-center gap-3 items-center flex-col">
-              <Button
+              <DefaultButton
                 type="submit"
                 className={clsx(`gap-3`, {
                   "cursor-not-allowed hover:bg-lime-700": loading,
@@ -73,7 +73,7 @@ const Login = () => {
                 disabled={loading}
               >
                 {loading && <Spinner width="1rem" height="1rem" />} Login
-              </Button>
+              </DefaultButton>
               <p className="text-[17px] md:text-[16px] text-center">
                 don't have an account,
                 <Link

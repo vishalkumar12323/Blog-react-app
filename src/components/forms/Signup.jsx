@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Input, Spinner } from "../index";
+import { DefaultButton, Input, Spinner } from "../index";
 import { useForm } from "react-hook-form";
 import { authService } from "../../services/auth_service";
 import { getSession } from "../../store/authSlice";
@@ -78,7 +78,7 @@ const Signup = () => {
             />
 
             <div className="w-full flex justify-center gap-2 items-center flex-col">
-              <Button
+              <DefaultButton
                 type="submit"
                 className={clsx(`flex gap-3 justify-center items-center`, {
                   "cursor-not-allowed hover:bg-green-800": loading,
@@ -87,7 +87,7 @@ const Signup = () => {
               >
                 {" "}
                 {loading && <Spinner width="1rem" height="1rem" />} Register
-              </Button>
+              </DefaultButton>
               <p className="text-[12px] md:text-[16px] text-center">
                 Already have an account?{" "}
                 <Link

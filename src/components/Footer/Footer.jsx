@@ -1,12 +1,10 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { session } from "../../store/authSlice";
-import { Button } from "../index";
-import { IoMdArrowUp } from "react-icons/io";
 
 const Footer = () => {
   const { status: authStatus } = useSelector(session);
-  console.log(authStatus);
   const navItems = [
     { name: "home", active: true, url: "/" },
     { name: "create blog", active: authStatus, url: "/new-blog" },
@@ -14,7 +12,7 @@ const Footer = () => {
     { name: "signup", active: !authStatus, url: "/signup" },
   ];
   return (
-    <footer className="h-auto w-full pt-16 pb-20 mt-4 font border-t flex items-center border-pink-500/10 backdrop-blur-sm">
+    <footer className="h-auto w-full pt-10 pb-12 mt-4 font border-t flex items-center border-pink-500/10 backdrop-blur-sm">
       <div className="w-full grid grid-cols-4 place-items-center items-start gap-3">
         <div>
           <Link
@@ -42,16 +40,6 @@ const Footer = () => {
 
         <div>
           <span className="text-2xl cursor-default capitalize">accounts</span>
-        </div>
-        <div>
-          <label className="text-2xl cursor-default capitalize">
-            go to top
-          </label>
-          <div className="flex justify-center mt-3">
-            <Button className="rounded-full">
-              <IoMdArrowUp size={25} />
-            </Button>
-          </div>
         </div>
       </div>
     </footer>

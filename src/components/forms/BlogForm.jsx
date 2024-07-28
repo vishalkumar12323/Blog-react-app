@@ -1,4 +1,4 @@
-import { Input, Button, Select, RTEditor, Spinner } from "../index";
+import { Input, DefaultButton, Select, RTEditor, Spinner } from "../index";
 import { useForm } from "react-hook-form";
 import { db } from "../../services/db_service";
 import { useCallback, useEffect, useState } from "react";
@@ -131,7 +131,7 @@ const BlogForm = ({ post }) => {
           />
 
           <div>
-            <Button
+            <DefaultButton
               type="submit"
               className={clsx(`px-8 py-2 gap-2 text-[17px]`, {
                 "cursor-not-allowed hover:bg-lime-700": loading,
@@ -141,7 +141,7 @@ const BlogForm = ({ post }) => {
               {" "}
               {loading && <Spinner height="1.2rem" width="1.2rem" />}
               {post ? "Update" : "Submit"}{" "}
-            </Button>
+            </DefaultButton>
           </div>
         </form>
       </div>

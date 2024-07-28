@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { db } from "../services/db_service";
 import { fetchBlogWithId } from "../store/blogSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { Button, Spinner } from "../components";
+import { DefaultButton, Spinner } from "../components";
 
 const Blog = () => {
   const { id } = useParams();
@@ -50,14 +50,14 @@ const Blog = () => {
           </p>
 
           <div className="w-[110px] h-auto absolute -right-7 bottom-2 rounded shadow-md bg-slate-800/70 dark:bg-slate-50/80 flex flex-col gap-3 mt-2 px-3 py-1">
-            <Button
+            <DefaultButton
               onClick={() =>
                 navigate(`/edit/${document?.$id}/${document?.slug}`)
               }
             >
               <span className="cursor-pointer">edit</span>
-            </Button>
-            <Button
+            </DefaultButton>
+            <DefaultButton
               onClick={() => {
                 db.deleteBlog().then((status) => {
                   if (status) {
@@ -68,7 +68,7 @@ const Blog = () => {
               }}
             >
               delete
-            </Button>
+            </DefaultButton>
           </div>
         </div>
       </div>

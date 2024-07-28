@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Input } from "../index";
+import { DefaultButton, CircleButton, Input } from "../index";
 import { authService } from "../../services/auth_service";
 import { logout } from "../../store/authSlice";
 import { useDispatch } from "react-redux";
@@ -21,9 +21,9 @@ const UserProfile = ({ user }) => {
   return (
     <>
       <div className="z-50">
-        <Button
+        <CircleButton
           onClick={() => setIsMenuVisible((prevState) => !prevState)}
-          className="btn flex justify-center items-center cursor-pointer py-[0.54rem!important] px-[0.80rem!important]"
+          className=""
         >
           {user.profile ? (
             <img src="..." alt="user-profile" className="w-full h-auto" />
@@ -33,12 +33,12 @@ const UserProfile = ({ user }) => {
               {user.name?.slice(0, 1).toUpperCase()}{" "}
             </span>
           )}
-        </Button>
+        </CircleButton>
       </div>
 
       {isMenuVisible && (
         <main
-          className="w-[95vw] h-screen absolute top-0 right-0"
+          className="w-screen h-screen absolute top-0 right-0"
           onClick={() => setIsMenuVisible(false)}
         >
           <div
@@ -63,7 +63,7 @@ const UserProfile = ({ user }) => {
                   ) : (
                     <span className="px-1 py-[0.30rem]">{user.name}</span>
                   )}{" "}
-                  <Button
+                  <CircleButton
                     type="button"
                     className="py-[0.55rem] px-[0.95rem] btn"
                     onClick={() => setIsEditable((prevState) => !prevState)}
@@ -71,14 +71,14 @@ const UserProfile = ({ user }) => {
                     <span className="dark:text-white text-black font-[600]">
                       {isEditable ? "d" : "e"}
                     </span>
-                  </Button>{" "}
+                  </CircleButton>{" "}
                 </li>
               </div>
               <div>
                 <li>Email</li>
                 <li className="px-1">{user.email}</li>
               </div>
-              <Button
+              <DefaultButton
                 type="button"
                 className={"mt-2 flex gap-1 items-center font-[600]"}
                 onClick={() => {
@@ -89,7 +89,7 @@ const UserProfile = ({ user }) => {
                 }}
               >
                 Logout <MdLogout />
-              </Button>
+              </DefaultButton>
             </ul>
           </div>
         </main>

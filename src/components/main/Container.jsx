@@ -1,6 +1,8 @@
-const Container = ({ children }) => {
+import clsx from "clsx";
+
+const Container = ({ children, className }) => {
   return (
-    <main className="max-w-screen-xl mx-auto min-h-screen flex flex-col">
+    <main className={clsx(`max-w-screen-xl mx-auto flex flex-col`, className)}>
       {children}
     </main>
   );

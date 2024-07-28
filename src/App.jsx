@@ -1,4 +1,4 @@
-import { Header, Footer, Container } from "./components";
+import { Header, Footer, Container, ScrollToTopButton } from "./components";
 import { Outlet } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
@@ -17,6 +17,7 @@ const App = () => {
         <Header />
         <Outlet />
         <Footer />
+        <ScrollToTopButton />
       </Container>
     </>
   );

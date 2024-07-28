@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Container } from "../index";
 
 const CheckUserOnLineOrOffline = ({ children }) => {
   const [isOnLine, setIsOnLine] = useState(navigator.onLine);
@@ -19,10 +20,10 @@ const CheckUserOnLineOrOffline = ({ children }) => {
       {isOnLine ? (
         children
       ) : (
-        <div>
-          oop&apos;s &#9785; look like you are offline, please connect to the
-          internet
-        </div>
+        <Container className="min-h-[80vh] justify-center items-center">
+          Oop&apos;s &#9785; look like you are offline, Please connect to the
+          internet and try again
+        </Container>
       )}
     </>
   );

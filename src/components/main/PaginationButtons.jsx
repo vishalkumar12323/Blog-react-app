@@ -1,11 +1,11 @@
 import clsx from "clsx";
-import { Button } from "../index";
+import { DefaultButton } from "../index";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 const PaginationButtons = ({ handlePagination, total, page }) => {
   return (
     <div className="w-full mb-4 flex justify-center items-center gap-3">
-      <Button
+      <DefaultButton
         className={clsx(`px-[15px!important] text-[22px]`, {
           "opacity-0": page === 1,
         })}
@@ -13,13 +13,13 @@ const PaginationButtons = ({ handlePagination, total, page }) => {
       >
         {" "}
         <MdChevronLeft />{" "}
-      </Button>
+      </DefaultButton>
       {[...Array(Math.ceil(total / 5))].map((_, i) => (
-        <Button key={i + 1} onClick={() => handlePagination(i + 1)}>
+        <DefaultButton key={i + 1} onClick={() => handlePagination(i + 1)}>
           {i + 1}
-        </Button>
+        </DefaultButton>
       ))}
-      <Button
+      <DefaultButton
         className={clsx(`px-[15px!important] text-[22px]`, {
           "opacity-0": page === Math.ceil(total / 5),
         })}
@@ -27,7 +27,7 @@ const PaginationButtons = ({ handlePagination, total, page }) => {
       >
         {" "}
         <MdChevronRight />{" "}
-      </Button>
+      </DefaultButton>
     </div>
   );
 };

@@ -1,4 +1,5 @@
-import Button from "./Button";
+import DefaultButton from "./Buttons/DefaultButton";
+import CircleButton from "./Buttons/CircleButton";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import Input from "./forms/Input";
@@ -15,12 +16,14 @@ import Blogs from "./main/Blogs";
 import ErrorPage from "./main/ErrorPage";
 import NotificationBar from "./main/NotificationBar";
 import PaginationButtons from "./main/PaginationButtons";
+import ScrollToTopButton from "./ScrollToTopButton";
 import CheckUserOnLineOrOffline from "./main/CheckUserOnLineOrOffline";
 
 export {
   Header,
   Footer,
-  Button,
+  DefaultButton,
+  CircleButton,
   Container,
   Input,
   Select,
@@ -35,5 +38,6 @@ export {
   NotificationBar,
   ErrorPage,
   PaginationButtons,
+  ScrollToTopButton,
   CheckUserOnLineOrOffline,
 };
