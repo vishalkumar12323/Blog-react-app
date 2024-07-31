@@ -21,7 +21,7 @@ const Header = () => {
         <div>
           <Link
             to="/"
-            className="logo text-3xl bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl text-transparent bg-clip-text font-semibold select-none"
+            className="logo text-3xl bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl text-transparent bg-clip-text font-normal select-none"
           >
             W.Lab
           </Link>
