@@ -1,3 +1,4 @@
+import React from "react";
 import { Signup as SignupForm } from "../components";
 
 const SignupPage = () => {

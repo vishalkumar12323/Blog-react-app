@@ -1,3 +1,4 @@
+import React from "react";
 const Container = ({ children }) => {
   return (
     <main className="max-w-screen-xl mx-auto min-h-screen flex flex-col">

@@ -1,1 +1,1 @@
-# Blog-react-app with AppWrite
+# Blog-react-app with TypeScript + AppWrite

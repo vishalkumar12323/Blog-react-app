@@ -1,3 +1,4 @@
+import React from "react";
 const Spinner = ({ width = "2rem", height = "2rem" }) => {
   return (
     <div role="status">

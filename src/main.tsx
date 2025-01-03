@@ -4,7 +4,7 @@ import "./index.css";
 import { store } from "./store/store.js";
 import { Provider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
-import { router } from "./route";
+import { router } from "./route.tsx";
 
 const rootElement = document.getElementById("root");
 if (rootElement) {

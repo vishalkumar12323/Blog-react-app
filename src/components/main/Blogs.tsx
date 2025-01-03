@@ -1,3 +1,4 @@
+import React from "react";
 import { db } from "../../services/db_service";
 import { Link } from "react-router-dom";
 import { MdArrowRightAlt } from "react-icons/md";
