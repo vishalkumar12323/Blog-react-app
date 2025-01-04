@@ -1,13 +1,18 @@
-
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useHref, useParams } from "react-router-dom";
 import { session } from "../../store/authSlice";
 
-const Layout = ({ children, isAuthenticated = true }) => {
+const Layout = ({
+  children,
+  isAuthenticated = true,
+}: {
+  children: React.ReactNode;
+  isAuthenticated: boolean;
+}) => {
   const { status: authStatus } = useSelector(session);
   const navigate = useNavigate();
-  const href = useHref();
+  const href = useHref(window.location.pathname);
   const { id, slug } = useParams();
 
   useEffect(() => {

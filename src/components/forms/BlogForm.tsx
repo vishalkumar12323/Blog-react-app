@@ -8,7 +8,6 @@ import { session } from "../../store/authSlice";
 import { useNavigate } from "react-router-dom";
 import clsx from "clsx";
 
-
 const BlogForm = ({ post }) => {
   const [loading, setLoading] = useState(false);
   const { register, handleSubmit, watch, control, setValue, getValues } =
@@ -139,7 +138,7 @@ const BlogForm = ({ post }) => {
               className={clsx(`px-8 py-2 gap-2 text-[17px]`, {
                 "cursor-not-allowed hover:bg-lime-700": loading,
               })}
-              disable={loading}
+              disabled={loading}
             >
               {" "}
               {loading && <Spinner height="1.2rem" width="1.2rem" />}

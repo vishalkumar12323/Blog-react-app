@@ -1,4 +1,5 @@
 import { config } from "../config/config.js";
+import { LoginProps, TUserProps } from "../lib/definations.ts";
 import { Client, Account, ID } from "appwrite";
 
 class AuthServices {
@@ -12,7 +13,7 @@ class AuthServices {
     this.account = new Account(this.client);
   }
 
-  async createAccount({ name, email, password }) {
+  async createAccount({ name, email, password }: TUserProps) {
     const userAccount = await this.account.create(
       ID.unique(),
       email,
@@ -29,7 +30,7 @@ class AuthServices {
     }
   }
 
-  async login({ email, password }) {
+  async login({ email, password }: LoginProps) {
     const user = await this.account.createEmailPasswordSession(email, password);
     return user;
   }
@@ -44,7 +45,7 @@ class AuthServices {
     return await this.account.deleteSession("current");
   }
 
-  async updateUserName(username) {
+  async updateUserName(username: string) {
     const user = await this.account.updateName(username);
     return user.name;
   }

@@ -13,7 +13,6 @@ import UserProfile from "./main/UserProfile.tsx";
 import Container from "./main/Container.tsx";
 import Blogs from "./main/Blogs.tsx";
 import ErrorPage from "./main/ErrorPage.tsx";
-import NotificationBar from "./main/NotificationBar.tsx";
 import PaginationButtons from "./main/PaginationButtons.tsx";
 import CheckUserOnLineOrOffline from "./main/CheckUserOnLineOrOffline.tsx";
 
@@ -32,7 +31,6 @@ export {
   Layout,
   UserProfile,
   Spinner,
-  NotificationBar,
   ErrorPage,
   PaginationButtons,
   CheckUserOnLineOrOffline,

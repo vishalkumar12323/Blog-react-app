@@ -9,7 +9,7 @@ const Blogs = ({ blogs, page }) => {
         <div className="border border-pink-500/40 to-orange-500/40" key={b.$id}>
           <div className="w-full h-3/4">
             <img
-              src={db.filePreviewUrl(b.coverImage)}
+              src={db.filePreviewUrl(b.coverImage).toString()}
               alt={b.heading}
               className="w-full h-auto object-fill"
             />

@@ -1,5 +1,6 @@
 import { config } from "../config/config.js";
 import { Client, ID, Databases, Storage } from "appwrite";
+import { TBlogProps } from "../lib/definations.ts";
 
 class DatabaseService {
   client = new Client();
@@ -14,7 +15,14 @@ class DatabaseService {
     this.bucket = new Storage(this.client);
   }
 
-  async createBlog({ heading, content, coverImage, userId, status, slug }) {
+  async createBlog({
+    heading,
+    content,
+    coverImage,
+    userId,
+    status,
+    slug,
+  }: TBlogProps) {
     try {
       return await this.databases.createDocument(
         config.appwrite_database_id,
@@ -35,7 +43,10 @@ class DatabaseService {
     }
   }
 
-  async updateBlog(id, { heading, content, coverImage, status, slug }) {
+  async updateBlog(
+    id: string,
+    { heading, content, coverImage, status, slug }: TBlogProps
+  ): Promise<TBlogProps> {
     try {
       return await this.databases.updateDocument(
         config.appwrite_database_id,
@@ -55,8 +66,7 @@ class DatabaseService {
     }
   }
 
-  async deleteBlog(id) {
-    console.log(id);
+  async deleteBlog(id: string): Promise<boolean> {
     try {
       await this.databases.deleteDocument(
         config.appwrite_database_id,
@@ -70,7 +80,7 @@ class DatabaseService {
     }
   }
 
-  async getBlog(id) {
+  async getBlog(id: string): Promise<TBlogProps> {
     try {
       const blog = await this.databases.getDocument(
         config.appwrite_database_id,
@@ -84,7 +94,7 @@ class DatabaseService {
     }
   }
 
-  async getAllBlog() {
+  async getAllBlog(): Promise<TBlogProps[]> {
     try {
       return await this.databases.listDocuments(
         config.appwrite_database_id,
@@ -98,7 +108,7 @@ class DatabaseService {
 
   // files uploads services
 
-  async uploadFile(file) {
+  async uploadFile(file: string): Promise<string> {
     try {
       return await this.bucket.createFile(
         config.appwrite_bucket_id,
@@ -111,11 +121,11 @@ class DatabaseService {
     }
   }
 
-  filePreviewUrl(fileId) {
+  filePreviewUrl(fileId: string): Promise<string> {
     return this.bucket.getFilePreview(config.appwrite_bucket_id, fileId);
   }
 
-  async deleteFile(fileId) {
+  async deleteFile(fileId: string): Promise<boolean> {
     try {
       await this.bucket.deleteFile(config.appwrite_bucket_id, fileId);
       return true;

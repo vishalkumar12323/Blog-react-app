@@ -1,5 +1,11 @@
 import React from "react";
-const Spinner = ({ width = "2rem", height = "2rem" }) => {
+const Spinner = ({
+  width = "2rem",
+  height = "2rem",
+}: {
+  width?: string | number;
+  height?: string | number;
+}) => {
   return (
     <div role="status">
       <svg

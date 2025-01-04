@@ -61,8 +61,8 @@ const Header = () => {
           >
             <DarkModeSwitch
               checked={isDarkTheme}
-              moonColor={isDarkTheme && "white"}
-              sunColor={!isDarkTheme && "black"}
+              moonColor={isDarkTheme ? "white" : undefined}
+              sunColor={!isDarkTheme ? "black" : undefined}
               onChange={(checked) => isDarkTheme && checked}
             />
           </button>
