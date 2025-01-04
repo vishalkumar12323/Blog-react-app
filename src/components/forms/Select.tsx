@@ -1,7 +1,11 @@
 import clsx from "clsx";
 import React, { useId } from "react";
 
-const Select = React.forwardRef(function Select(
+interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+  label?: string;
+  options?: string[];
+ }
+const Select = React.forwardRef<HTMLSelectElement, SelectProps>(function Select(
   { label, options, className = "", ...props },
   ref
 ) {

@@ -1,7 +1,11 @@
 import clsx from "clsx";
 import React, { useId } from "react";
 
-const Input = React.forwardRef(function Input(
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  label?: string;
+}
+
+const Input = React.forwardRef<HTMLInputElement, InputProps>(function Input(
   { label, type = "text", className = "", autoComplete = "off", ...props },
   ref
 ) {

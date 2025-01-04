@@ -8,6 +8,7 @@ import { session } from "../../store/authSlice";
 import { useNavigate } from "react-router-dom";
 import clsx from "clsx";
 
+
 const BlogForm = ({ post }) => {
   const [loading, setLoading] = useState(false);
   const { register, handleSubmit, watch, control, setValue, getValues } =
@@ -17,6 +18,7 @@ const BlogForm = ({ post }) => {
         slug: post?.slug || "",
         content: post?.content || "",
         status: post?.status || "active",
+        coverImage: post?.coverImage || null,
       },
     });
 
@@ -112,7 +114,7 @@ const BlogForm = ({ post }) => {
           {post && (
             <div className="w-full mb-3">
               <img
-                src={db.filePreviewUrl(post.coverImage)}
+                src={db.filePreviewUrl(post.coverImage).toString()}
                 alt={post.title}
                 className="rounded-md"
               />
