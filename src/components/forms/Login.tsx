@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { getSession } from "../../store/authSlice";
+import {AppDispatch} from "../../store/store";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { authService } from "../../services/auth_service";
@@ -8,13 +9,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button, Input, Spinner } from "../index";
 import clsx from "clsx";
 
+interface LoginFormData {
+  email: string;
+  password: string;
+}
 const Login = () => {
   const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset } = useForm<LoginFormData>();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data : LoginFormData) => {
     try {
       setLoading(true);
       const session = await authService.login(data);

@@ -3,17 +3,23 @@ import { Button, Input, Spinner } from "../index";
 import { useForm } from "react-hook-form";
 import { authService } from "../../services/auth_service";
 import { getSession } from "../../store/authSlice";
+import { AppDispatch } from "../../store/store";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import clsx from "clsx";
 
+interface SignupFormData {
+  name: string;
+  email: string;
+  password: string;
+}
 const Signup = () => {
   const [loading, setLoading] = useState(false);
-  const { register, handleSubmit, reset } = useForm();
-  const dispatch = useDispatch();
+  const { register, handleSubmit, reset } = useForm<SignupFormData>();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: SignupFormData) => {
     try {
       setLoading(true);
       const user = await authService.createAccount(data);

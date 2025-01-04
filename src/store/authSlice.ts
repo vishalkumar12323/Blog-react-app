@@ -22,7 +22,11 @@ const authSlices = createSlice({
     logout: (state) => {
       state.loading = false;
       state.status = false;
-      state.user = null;
+      state.user = {
+        id: "",
+        name: "",
+        email: "",
+      };
     },
   },
   extraReducers: (builder) => {
@@ -30,7 +34,9 @@ const authSlices = createSlice({
       state.loading = true;
       state.status = false;
       state.user = {
-        ...action.payload,
+        ...(typeof action.payload === "object" && action.payload !== null
+          ? action.payload
+          : {}),
         id: "",
         name: "",
         email: "",
