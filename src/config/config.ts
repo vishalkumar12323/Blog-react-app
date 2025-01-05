@@ -1,16 +1,19 @@
+/// <reference types="vite/client" />
+
 interface ImportMetaEnv {
-  VITE_APPWRITE_API_URL: string;
-  VITE_APPWRITE_PROJECT_ID: string;
-  VITE_APPWRITE_DATABASE_ID: string;
-  VITE_APPWRITE_COLLECTION_ID: string;
-  VITE_APPWRITE_BUCKET_ID: string;
-  VITE_TINYMCE_API_KEY: string;
+  readonly env: {
+    readonly VITE_APPWRITE_API_URL: string;
+    readonly VITE_APPWRITE_PROJECT_ID: string;
+    readonly VITE_APPWRITE_DATABASE_ID: string;
+    readonly VITE_APPWRITE_COLLECTION_ID: string;
+    readonly VITE_APPWRITE_BUCKET_ID: string;
+    readonly VITE_TINYMCE_API_KEY: string;
+  };
 }
 
-interface ImportMeta {
+export interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
-
 export const config = {
   appwrite_url: String(import.meta.env.VITE_APPWRITE_API_URL),
   appwrite_project_id: String(import.meta.env.VITE_APPWRITE_PROJECT_ID),
