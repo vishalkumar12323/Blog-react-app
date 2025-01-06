@@ -1,16 +1,23 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { db } from "../services/db_service";
+import { TBlogResponse } from "../lib/definations.ts";
 
 export const fetchBlogs = createAsyncThunk("fetch/blog", async () => {
   return await db.getAllBlog();
 });
 
-export const fetchBlogWithId = createAsyncThunk("fetch/blog/id", async (id) => {
-  return await db.getBlog(id);
-});
+export const fetchBlogWithId = createAsyncThunk(
+  "fetch/blog/id",
+  async (id: string) => {
+    return await db.getBlog(id);
+  }
+);
+
 const initialState = {
   isFetching: true,
-  documents: [],
+  documents: [
+    { id: "", heading: "", content: "", coverImage: "", slug: "", userId: "" },
+  ],
   total: 0,
   error: null,
 };
@@ -18,6 +25,7 @@ const initialState = {
 const blogSlices = createSlice({
   name: "blog",
   initialState,
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchBlogs.pending, (state) => {
       state.isFetching = true;
@@ -26,6 +34,7 @@ const blogSlices = createSlice({
       state.error = null;
     });
     builder.addCase(fetchBlogs.fulfilled, (state, action) => {
+      // console.log(action.payload);
       state.isFetching = false;
       state.documents = action.payload.documents;
       state.total = action.payload.total;
@@ -47,6 +56,7 @@ const getBlogWithId = createSlice({
     document: [],
     error: null,
   },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchBlogWithId.pending, (state) => {
       state.isFetching = true;

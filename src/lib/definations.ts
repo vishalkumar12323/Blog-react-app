@@ -15,3 +15,10 @@ export type TUserProps = {
 };
 
 export type LoginProps = Omit<TUserProps, "name">;
+
+export type TBlogResponse = {
+  isFetching: boolean;
+  documents: TBlogProps[];
+  total: number;
+  error: string | null;
+};

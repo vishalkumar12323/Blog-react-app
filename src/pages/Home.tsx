@@ -5,16 +5,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { fetchBlogs } from "../store/blogSlice";
 import { session } from "../store/authSlice";
+import { RootState, AppDispatch } from "../store/store.ts";
 
 const Home = () => {
   const {
     isFetching,
     documents,
     total: totalPages,
-  } = useSelector((state) => state.blogs);
+  } = useSelector((state: RootState) => state.blogs);
   const { status } = useSelector(session);
   const { page, handlePagination } = usePagination(totalPages); // usePagination takes total page length as argument
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
   useEffect(() => {
