@@ -1,10 +1,10 @@
 import { config } from "../config/config.js";
-import { LoginProps, TUserProps } from "../lib/definations.ts";
+import { LoginProps, TUserProps, IUserProps } from "../lib/definations.ts";
 import { Client, Account, ID } from "appwrite";
 
 class AuthServices {
   client = new Client();
-  account;
+  account: Account;
 
   constructor() {
     this.client
@@ -38,7 +38,7 @@ class AuthServices {
   async getSession() {
     const user = await this.account.get();
     if (!user) return null;
-    return user;
+    return user as IUserProps;
   }
 
   async logout() {

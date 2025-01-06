@@ -1,4 +1,6 @@
-export type TBlogProps = {
+import { type Models } from "appwrite";
+
+export interface IBlogProps extends Models.Document {
   id: string;
   heading: string;
   content: string;
@@ -6,7 +8,20 @@ export type TBlogProps = {
   slug: string;
   userId: string;
   status?: string;
-};
+}
+
+export interface IBlogsResponse {
+  isFetching: boolean;
+  documents: IBlogProps[];
+  total: number;
+  error: string | null;
+}
+
+export interface IBlogResponse {
+  isFetching: boolean;
+  document: IBlogProps;
+  error: string | null;
+}
 
 export type TUserProps = {
   name: string;
@@ -16,9 +31,13 @@ export type TUserProps = {
 
 export type LoginProps = Omit<TUserProps, "name">;
 
-export type TBlogResponse = {
-  isFetching: boolean;
-  documents: TBlogProps[];
-  total: number;
-  error: string | null;
-};
+export interface IUserProps extends Models.User<Models.Preferences> {
+  name: string;
+  email: string;
+}
+
+export interface IAuthResponse {
+  loading: boolean;
+  status: boolean;
+  user: IUserProps;
+}

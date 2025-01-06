@@ -1,25 +1,28 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { db } from "../services/db_service";
-import { TBlogResponse } from "../lib/definations.ts";
+import {
+  IBlogsResponse,
+  IBlogProps,
+  IBlogResponse,
+} from "../lib/definations.ts";
+import { RootState } from "./store.ts";
 
-export const fetchBlogs = createAsyncThunk("fetch/blog", async () => {
+export const fetchBlogs = createAsyncThunk("fetch/blogs", async () => {
   return await db.getAllBlog();
 });
 
 export const fetchBlogWithId = createAsyncThunk(
-  "fetch/blog/id",
+  "blogs/fetchById",
   async (id: string) => {
     return await db.getBlog(id);
   }
 );
 
-const initialState = {
-  isFetching: true,
-  documents: [
-    { id: "", heading: "", content: "", coverImage: "", slug: "", userId: "" },
-  ],
-  total: 0,
+const initialState: IBlogsResponse = {
+  documents: [] as IBlogProps[],
+  isFetching: false,
   error: null,
+  total: 0,
 };
 
 const blogSlices = createSlice({
@@ -30,37 +33,48 @@ const blogSlices = createSlice({
     builder.addCase(fetchBlogs.pending, (state) => {
       state.isFetching = true;
       state.documents = [];
-      state.total = 0;
       state.error = null;
+      state.total = state.documents.length;
     });
+
     builder.addCase(fetchBlogs.fulfilled, (state, action) => {
-      // console.log(action.payload);
       state.isFetching = false;
       state.documents = action.payload.documents;
+      state.error = action.payload.error;
       state.total = action.payload.total;
-      state.error = null;
     });
     builder.addCase(fetchBlogs.rejected, (state, action) => {
+      console.log(action);
       state.isFetching = false;
       state.documents = [];
-      state.total = [];
-      state.error = action.payload?.message;
+      state.total = 0;
+      state.error = action.payload as string;
     });
   },
 });
 
+const blogByIdState: IBlogResponse = {
+  document: {
+    id: "",
+    heading: "",
+    content: "",
+    coverImage: "",
+    slug: "",
+    userId: "",
+    status: "",
+  } as IBlogProps,
+  isFetching: false,
+  error: null,
+};
+
 const getBlogWithId = createSlice({
   name: "blog/id",
-  initialState: {
-    isFetching: true,
-    document: [],
-    error: null,
-  },
+  initialState: blogByIdState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchBlogWithId.pending, (state) => {
       state.isFetching = true;
-      state.document = [];
+      state.document = {} as IBlogProps;
       state.error = null;
     });
     builder.addCase(fetchBlogWithId.fulfilled, (state, action) => {
@@ -69,13 +83,13 @@ const getBlogWithId = createSlice({
       state.error = null;
     });
     builder.addCase(fetchBlogWithId.rejected, (state, action) => {
+      console.log(action);
       state.isFetching = false;
-      state.document = [];
-      state.total = [];
-      state.error = action.payload?.message;
+      state.document = {} as IBlogProps;
+      state.error = action.payload as string;
     });
   },
 });
-export const getBlogs = (state) => state.blogs;
+export const getBlogs = (state: RootState) => state.blogs;
 
 export { blogSlices, getBlogWithId };

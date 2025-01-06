@@ -1,11 +1,11 @@
 import { config } from "../config/config.js";
 import { Client, ID, Databases, Storage } from "appwrite";
-import { TBlogProps } from "../lib/definations.ts";
+import { IBlogProps, IBlogsResponse } from "../lib/definations.ts";
 
 class DatabaseService {
   client = new Client();
-  databases;
-  bucket;
+  databases: Databases;
+  bucket: Storage;
 
   constructor() {
     this.client
@@ -15,14 +15,7 @@ class DatabaseService {
     this.bucket = new Storage(this.client);
   }
 
-  async createBlog({
-    heading,
-    content,
-    coverImage,
-    userId,
-    status,
-    slug,
-  }: TBlogProps) {
+  async createBlog({ heading, content, coverImage, userId, status, slug }) {
     try {
       return await this.databases.createDocument(
         config.appwrite_database_id,
@@ -43,10 +36,7 @@ class DatabaseService {
     }
   }
 
-  async updateBlog(
-    id: string,
-    { heading, content, coverImage, status, slug }: TBlogProps
-  ): Promise<TBlogProps> {
+  async updateBlog(id: string, { heading, content, coverImage, status, slug }) {
     try {
       return await this.databases.updateDocument(
         config.appwrite_database_id,
@@ -66,7 +56,7 @@ class DatabaseService {
     }
   }
 
-  async deleteBlog(id: string): Promise<boolean> {
+  async deleteBlog(id: string) {
     try {
       await this.databases.deleteDocument(
         config.appwrite_database_id,
@@ -80,26 +70,27 @@ class DatabaseService {
     }
   }
 
-  async getBlog(id: string): Promise<TBlogProps> {
+  async getBlog(id: string) {
     try {
       const blog = await this.databases.getDocument(
         config.appwrite_database_id,
         config.appwrite_collection_id,
         id
       );
-      return blog;
+      return blog as IBlogProps;
     } catch (error) {
       console.log("Database Services :: error fetching blog ", error);
       throw error;
     }
   }
 
-  async getAllBlog(): Promise<TBlogProps[]> {
+  async getAllBlog() {
     try {
-      return await this.databases.listDocuments(
+      const blogs = await this.databases.listDocuments(
         config.appwrite_database_id,
         config.appwrite_collection_id
       );
+      return blogs as IBlogsResponse;
     } catch (error) {
       console.log("Database Services :: error fetching all blog ", error);
       throw error;
@@ -108,7 +99,7 @@ class DatabaseService {
 
   // files uploads services
 
-  async uploadFile(file: string): Promise<string> {
+  async uploadFile(file: File) {
     try {
       return await this.bucket.createFile(
         config.appwrite_bucket_id,
@@ -121,7 +112,7 @@ class DatabaseService {
     }
   }
 
-  filePreviewUrl(fileId: string): Promise<string> {
+  filePreviewUrl(fileId: string) {
     return this.bucket.getFilePreview(config.appwrite_bucket_id, fileId);
   }
 

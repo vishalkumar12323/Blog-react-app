@@ -1,18 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { authService } from "../services/auth_service";
+import { RootState } from "./store.ts";
+import { IUserProps, IAuthResponse } from "../lib/definations.ts";
 
 export const getSession = createAsyncThunk("fetch/user", async () => {
   return await authService.getSession();
 });
 
-const initialAuthState = {
+const initialAuthState: IAuthResponse = {
   loading: true,
   status: false,
   user: {
-    id: "",
     name: "",
     email: "",
-  },
+  } as IUserProps,
 };
 
 const authSlices = createSlice({
@@ -23,48 +24,34 @@ const authSlices = createSlice({
       state.loading = false;
       state.status = false;
       state.user = {
-        id: "",
         name: "",
         email: "",
-      };
+      } as IUserProps;
     },
   },
   extraReducers: (builder) => {
     builder.addCase(getSession.pending, (state, action) => {
       state.loading = true;
       state.status = false;
-      state.user = {
-        ...(typeof action.payload === "object" && action.payload !== null
-          ? action.payload
-          : {}),
-        id: "",
-        name: "",
-        email: "",
-      };
+      state.user = {} as IUserProps;
     });
     builder.addCase(getSession.fulfilled, (state, action) => {
       state.loading = false;
       state.status = true;
-      state.user = {
-        ...action.payload,
-        id: action.payload.$id,
-        name: action.payload.name,
-        email: action.payload.email,
-      };
+      state.user = action.payload as IUserProps;
     });
     builder.addCase(getSession.rejected, (state) => {
       state.loading = false;
       state.status = false;
       state.user = {
-        id: "",
         name: "",
         email: "",
-      };
+      } as IUserProps;
     });
   },
 });
 
 export const { logout } = authSlices.actions;
-export const session = (state) => state.auth;
+export const session = (state: RootState) => state.auth;
 
 export { authSlices };
