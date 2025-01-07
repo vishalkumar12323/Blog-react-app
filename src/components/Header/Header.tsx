@@ -50,11 +50,11 @@ const Header = () => {
         </ul>
 
         <div className="flex gap-2 items-center justify-center relative">
-          {authStatus && (
-            <>
-              <UserProfile user={user} />
-            </>
-          )}
+          {/* {!authStatus && ( */}
+          <>
+            <UserProfile user={user} />
+          </>
+          {/* )} */}
           <button
             onClick={toggleTheme}
             className="bg-transparent hover:bg-transparent border-none active:shadow-none"

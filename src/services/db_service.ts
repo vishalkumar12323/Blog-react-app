@@ -102,7 +102,7 @@ class DatabaseService {
   async uploadFile(file: File) {
     try {
       return await this.bucket.createFile(
-        config.appwrite_bucket_id,
+        config.appwrite_image_bucket_id,
         ID.unique(),
         file
       );
@@ -113,12 +113,12 @@ class DatabaseService {
   }
 
   filePreviewUrl(fileId: string) {
-    return this.bucket.getFilePreview(config.appwrite_bucket_id, fileId);
+    return this.bucket.getFilePreview(config.appwrite_image_bucket_id, fileId);
   }
 
   async deleteFile(fileId: string): Promise<boolean> {
     try {
-      await this.bucket.deleteFile(config.appwrite_bucket_id, fileId);
+      await this.bucket.deleteFile(config.appwrite_image_bucket_id, fileId);
       return true;
     } catch (error) {
       console.log("Storage Services :: error deleting file ", error);

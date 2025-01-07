@@ -6,27 +6,35 @@ import { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { session } from "../../store/authSlice";
 import { useNavigate } from "react-router-dom";
+import { IBlogProps } from "../../lib/definations.ts";
 import clsx from "clsx";
 
-const BlogForm = ({ post }) => {
+type BlogFormProps = {
+  heading: string;
+  slug: string;
+  content: string;
+  status: string;
+  coverImage: File | null;
+};
+
+const BlogForm = ({ post }: { post?: IBlogProps }) => {
   const [loading, setLoading] = useState(false);
   const { register, handleSubmit, watch, control, setValue, getValues } =
-    useForm({
+    useForm<BlogFormProps>({
       defaultValues: {
-        heading: post?.heading || "",
-        slug: post?.slug || "",
-        content: post?.content || "",
-        status: post?.status || "active",
-        coverImage: post?.coverImage || null,
+        heading: post?.heading,
+        slug: post?.slug,
+        content: post?.content,
+        status: post?.status,
       },
     });
 
   const { user } = useSelector(session);
   const navigate = useNavigate();
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: BlogFormProps) => {
     setLoading(true);
     if (post) {
-      const file = data.coverImage[0]
+      const file = data.coverImage
         ? await db.uploadFile(data.coverImage[0])
         : null;
       if (file) {
@@ -44,14 +52,14 @@ const BlogForm = ({ post }) => {
       }
     } else {
       setLoading(true);
-      const file = data.coverImage[0]
+      const file = data.coverImage
         ? await db.uploadFile(data.coverImage[0])
         : null;
       if (file) {
         const blogPost = await db.createBlog({
           ...data,
           coverImage: file.$id,
-          userId: user.id,
+          userId: user.$id,
         });
         if (blogPost) {
           // navigate user

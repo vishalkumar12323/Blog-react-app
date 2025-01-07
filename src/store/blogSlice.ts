@@ -44,7 +44,7 @@ const blogSlices = createSlice({
       state.total = action.payload.total;
     });
     builder.addCase(fetchBlogs.rejected, (state, action) => {
-      console.log(action);
+      // console.log(action);
       state.isFetching = false;
       state.documents = [];
       state.total = 0;
@@ -83,7 +83,7 @@ const getBlogWithId = createSlice({
       state.error = null;
     });
     builder.addCase(fetchBlogWithId.rejected, (state, action) => {
-      console.log(action);
+      // console.log(action);
       state.isFetching = false;
       state.document = {} as IBlogProps;
       state.error = action.payload as string;

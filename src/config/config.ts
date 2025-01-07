@@ -6,8 +6,9 @@ interface ImportMetaEnv {
     readonly VITE_APPWRITE_PROJECT_ID: string;
     readonly VITE_APPWRITE_DATABASE_ID: string;
     readonly VITE_APPWRITE_COLLECTION_ID: string;
-    readonly VITE_APPWRITE_BUCKET_ID: string;
+    readonly VITE_APPWRITE_IMAGE_BUCKET_ID: string;
     readonly VITE_TINYMCE_API_KEY: string;
+    readonly VITE_APPWRITE_USER_PROFILE_BUCKET_ID: string;
   };
 }
 
@@ -19,6 +20,11 @@ export const config = {
   appwrite_project_id: String(import.meta.env.VITE_APPWRITE_PROJECT_ID),
   appwrite_database_id: String(import.meta.env.VITE_APPWRITE_DATABASE_ID),
   appwrite_collection_id: String(import.meta.env.VITE_APPWRITE_COLLECTION_ID),
-  appwrite_bucket_id: String(import.meta.env.VITE_APPWRITE_BUCKET_ID),
+  appwrite_image_bucket_id: String(
+    import.meta.env.VITE_APPWRITE_IMAGE_BUCKET_ID
+  ),
+  appwrite_user_profile_bucket_id: String(
+    import.meta.env.VITE_APPWRITE_USER_PROFILE_BUCKET_ID
+  ),
   tinymce_api_key: String(import.meta.env.VITE_TINYMCE_API_KEY),
 };

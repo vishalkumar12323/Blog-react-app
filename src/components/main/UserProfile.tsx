@@ -5,18 +5,16 @@ import { logout } from "../../store/authSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { MdLogout } from "react-icons/md";
+import { AppDispatch } from "../../store/store.ts";
+import { IUserProps } from "../../lib/definations.ts";
 
-const UserProfile = ({ user }) => {
+const UserProfile = ({ user }: { user: IUserProps }) => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const [isEditable, setIsEditable] = useState(false);
-  const [updatedName, setUpdatedName] = useState(user?.name);
+  const [updatedName, setUpdatedName] = useState<string>(user?.name);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-
-  // const updateUserName= () => {
-
-  // }
 
   return (
     <>
@@ -25,12 +23,12 @@ const UserProfile = ({ user }) => {
           onClick={() => setIsMenuVisible((prevState) => !prevState)}
           className="btn flex justify-center items-center cursor-pointer py-[0.54rem!important] px-[0.80rem!important]"
         >
-          {user.profile ? (
+          {user.profileImageId ? (
             <img src="..." alt="user-profile" className="w-full h-auto" />
           ) : (
             <span className="text-[1.2rem] font-semibold">
               {" "}
-              {user.name?.slice(0, 1).toUpperCase()}{" "}
+              v{/* {user.name?.slice(0, 1).toUpperCase()}{" "} */}
             </span>
           )}
         </Button>
@@ -61,7 +59,10 @@ const UserProfile = ({ user }) => {
                       onChange={(e) => setUpdatedName(e.target.value)}
                     />
                   ) : (
-                    <span className="px-1 py-[0.30rem]">{user.name}</span>
+                    <span className="px-1 py-[0.30rem]">
+                      vishal kumars
+                      {/* {user.name} */}
+                    </span>
                   )}{" "}
                   <Button
                     type="button"
@@ -76,7 +77,10 @@ const UserProfile = ({ user }) => {
               </div>
               <div>
                 <li>Email</li>
-                <li className="px-1">{user.email}</li>
+                <li className="px-1">
+                  vishal@gmail.com
+                  {/* {user.email} */}
+                </li>
               </div>
               <Button
                 type="button"

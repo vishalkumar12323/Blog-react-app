@@ -3,7 +3,16 @@ import clsx from "clsx";
 import { Button } from "../index";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
-const PaginationButtons = ({ handlePagination, total, page }) => {
+type TPaginationButtonProps = {
+  handlePagination: (currentPage: number) => void;
+  total: number;
+  page: number;
+};
+const PaginationButtons = ({
+  handlePagination,
+  total,
+  page,
+}: TPaginationButtonProps) => {
   return (
     <div className="w-full mb-4 flex justify-center items-center gap-3">
       <Button

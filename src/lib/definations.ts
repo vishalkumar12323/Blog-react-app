@@ -34,6 +34,7 @@ export type LoginProps = Omit<TUserProps, "name">;
 export interface IUserProps extends Models.User<Models.Preferences> {
   name: string;
   email: string;
+  profileImageId: string;
 }
 
 export interface IAuthResponse {
