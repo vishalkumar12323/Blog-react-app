@@ -1,12 +1,74 @@
 import React, { useState } from "react";
 import { Button, Input } from "../index";
 import { authService } from "../../services/auth_service";
+import { db } from "../../services/db_service.ts";
 import { logout } from "../../store/authSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { MdLogout } from "react-icons/md";
+import {
+  MdAdd,
+  MdClose,
+  MdLogout,
+  MdArrowBack,
+  MdDelete,
+} from "react-icons/md";
 import { AppDispatch } from "../../store/store.ts";
 import { IUserProps } from "../../lib/definations.ts";
+import { LuPencil } from "react-icons/lu";
+
+const ProfileImage = ({
+  setIsEditable,
+}: {
+  setIsEditable: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
+  const [profileImage, setProfileImage] = useState();
+  return (
+    <>
+      <div className="p-3">
+        <button
+          onClick={() => setIsEditable(false)}
+          className="bg-slate-200 dark:bg-slate-900 hover:bg-slate-900/50 dark:hover:bg-slate-900/50 p-1 rounded-full transition-colors"
+        >
+          <MdArrowBack size={20} />
+        </button>
+
+        <div className="flex flex-col px-4 mt-2">
+          <span>Profile picture</span>
+          <p>
+            A picture helps people recognize you and lets you know when you’re
+            signed in to your account.
+          </p>
+        </div>
+
+        <div className="w-24 h-24 rounded-full mx-auto mt-2">
+          {profileImage ? (
+            <img
+              src="/profile.jpg"
+              alt="profile"
+              className="w-full h-auto rounded-full select-none"
+            />
+          ) : (
+            <span className="text-[3rem] rounded-full font-semibold flex justify-center items-center w-full h-full bg-slate-200 dark:bg-slate-900 hover:bg-slate-900/50 dark:hover:bg-slate-900/50">
+              {" "}
+              v{/* {user.name?.slice(0, 1).toUpperCase()}{" "} */}
+            </span>
+          )}
+        </div>
+
+        <div className="flex justify-center gap-1 mt-5 mx-auto w-3/4 h-16">
+          <button className="bg-slate-200 dark:bg-slate-900 hover:bg-slate-900/50 dark:hover:bg-slate-900/50 w-full rounded-l-full flex justify-center items-center gap-3 transition-colors">
+            <LuPencil size={20} />
+            Change
+          </button>
+          <button className="bg-slate-200 dark:bg-slate-900 hover:bg-slate-900/50 dark:hover:bg-slate-900/50 w-full rounded-r-full flex justify-center items-center gap-3 transition-colors">
+            <MdDelete size={20} />
+            Remove
+          </button>
+        </div>
+      </div>
+    </>
+  );
+};
 
 const UserProfile = ({ user }: { user: IUserProps }) => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
@@ -24,7 +86,11 @@ const UserProfile = ({ user }: { user: IUserProps }) => {
           className="btn flex justify-center items-center cursor-pointer py-[0.54rem!important] px-[0.80rem!important]"
         >
           {user.profileImageId ? (
-            <img src="..." alt="user-profile" className="w-full h-auto" />
+            <img
+              src={db.getUserProfile(user.profileImageId).toString()}
+              alt="user-profile"
+              className="w-full h-auto rounded-full"
+            />
           ) : (
             <span className="text-[1.2rem] font-semibold">
               {" "}
@@ -35,68 +101,64 @@ const UserProfile = ({ user }: { user: IUserProps }) => {
       </div>
 
       {isMenuVisible && (
-        <main
-          className="w-[95vw] h-screen absolute top-0 right-0"
-          onClick={() => setIsMenuVisible(false)}
-        >
-          <div
-            className="absolute top-12 right-4 sm:w-60 h-auto border rounded-md border-pink-500 to-orange-500 z-50 p-3 bg-white/65 dark:bg-slate-800/65"
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-          >
-            <ul className="w-full flex flex-col justify-center items-start">
-              <div className="w-full">
-                <li>Username</li>
-                <li className="px-1 flex justify-between w-full items-start gap-2">
-                  {isEditable ? (
-                    <Input
-                      type="text"
-                      className="bg-transparent py-[0.30rem] transition rounded"
-                      autoComplete="off"
-                      value={updatedName}
-                      name="updatedName"
-                      onChange={(e) => setUpdatedName(e.target.value)}
-                    />
-                  ) : (
-                    <span className="px-1 py-[0.30rem]">
-                      vishal kumars
-                      {/* {user.name} */}
-                    </span>
-                  )}{" "}
-                  <Button
-                    type="button"
-                    className="py-[0.55rem] px-[0.95rem] btn"
-                    onClick={() => setIsEditable((prevState) => !prevState)}
-                  >
-                    <span className="dark:text-white text-black font-[600]">
-                      {isEditable ? "d" : "e"}
-                    </span>
-                  </Button>{" "}
-                </li>
+        <div className="w-[28rem] h-[20rem] rounded-2xl dark:bg-slate-800 bg-white shadow-xl absolute right-10 top-12">
+          {isEditable ? (
+            <ProfileImage setIsEditable={setIsEditable} />
+          ) : (
+            <>
+              <div className="flex justify-center gap-4 p-4 relative">
+                <p className="text-xl dark:text-white">
+                  {" "}
+                  vishalkkumar342@gmail.com{" "}
+                </p>
+                <button
+                  onClick={() => setIsMenuVisible(false)}
+                  className="w-fit h-fit p-2 rounded-full cursor-pointer bg-slate-200 dark:bg-gray-700 hover:bg-gray-500 dark:hover:bg-gray-500 transition-colors absolute right-2 top-2"
+                >
+                  {" "}
+                  <MdClose size={22} />{" "}
+                </button>
               </div>
-              <div>
-                <li>Email</li>
-                <li className="px-1">
-                  vishal@gmail.com
-                  {/* {user.email} */}
-                </li>
+
+              <div className="w-24 h-24 rounded-full mx-auto mt-2 relative">
+                {user.profileImageId ? (
+                  <img
+                    src={db.getUserProfile(user.profileImageId).toString()}
+                    alt="profile"
+                    className="w-full h-auto rounded-full select-none"
+                  />
+                ) : (
+                  <span className="text-[3rem] rounded-full font-semibold flex justify-center items-center w-full h-full bg-slate-200 dark:bg-slate-900 hover:bg-slate-900/50 dark:hover:bg-slate-900/50">
+                    {" "}
+                    v{/* {user.name?.slice(0, 1).toUpperCase()}{" "} */}
+                  </span>
+                )}
+
+                <button
+                  onClick={() => setIsEditable(true)}
+                  className="absolute right-1 bottom-[-0.50rem] w-fit h-fit p-1 rounded-full cursor-pointer bg-slate-200 dark:bg-gray-700 hover:bg-gray-500 dark:hover:bg-gray-500 transition-colors"
+                >
+                  {" "}
+                  <LuPencil size={15} />{" "}
+                </button>
               </div>
-              <Button
-                type="button"
-                className={"mt-2 flex gap-1 items-center font-[600]"}
-                onClick={() => {
-                  authService.logout();
-                  dispatch(logout());
-                  setIsMenuVisible(false);
-                  navigate("/login");
-                }}
-              >
-                Logout <MdLogout />
-              </Button>
-            </ul>
-          </div>
-        </main>
+
+              <div className="mt-2">
+                <p className="text-center text-[22px]"> vishal kumar </p>
+              </div>
+              <div className="flex justify-center gap-1 mt-5 mx-auto w-3/4 h-16">
+                <button className="bg-slate-200 dark:bg-slate-900 hover:bg-slate-900/50 dark:hover:bg-slate-900/50 w-full rounded-l-full flex justify-center items-center gap-3 transition-colors">
+                  <MdAdd size={22} />
+                  Add Account
+                </button>
+                <button className="bg-slate-200 dark:bg-slate-900 hover:bg-slate-900/50 dark:hover:bg-slate-900/50 w-full rounded-r-full flex justify-center items-center gap-3 transition-colors">
+                  <MdLogout size={22} />
+                  Log Out
+                </button>
+              </div>
+            </>
+          )}
+        </div>
       )}
     </>
   );

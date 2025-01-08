@@ -4,12 +4,13 @@ import { Outlet } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getSession } from "./store/authSlice";
+import { AppDispatch } from "./store/store";
 
 const App = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(getSession());
+    // dispatch(getSession());
   }, [dispatch]);
 
   return (

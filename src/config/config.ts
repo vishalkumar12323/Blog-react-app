@@ -8,7 +8,6 @@ interface ImportMetaEnv {
     readonly VITE_APPWRITE_COLLECTION_ID: string;
     readonly VITE_APPWRITE_IMAGE_BUCKET_ID: string;
     readonly VITE_TINYMCE_API_KEY: string;
-    readonly VITE_APPWRITE_USER_PROFILE_BUCKET_ID: string;
   };
 }
 
@@ -22,9 +21,6 @@ export const config = {
   appwrite_collection_id: String(import.meta.env.VITE_APPWRITE_COLLECTION_ID),
   appwrite_image_bucket_id: String(
     import.meta.env.VITE_APPWRITE_IMAGE_BUCKET_ID
-  ),
-  appwrite_user_profile_bucket_id: String(
-    import.meta.env.VITE_APPWRITE_USER_PROFILE_BUCKET_ID
   ),
   tinymce_api_key: String(import.meta.env.VITE_TINYMCE_API_KEY),
 };

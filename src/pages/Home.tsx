@@ -19,7 +19,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(fetchBlogs());
+    // dispatch(fetchBlogs());
   }, [dispatch]);
 
   if (isFetching) {

@@ -99,6 +99,18 @@ class DatabaseService {
 
   // files uploads services
 
+  async updateFile(fileId: string, file: File, name?: string) {
+    try {
+      return await this.bucket.updateFile(
+        config.appwrite_image_bucket_id,
+        fileId,
+        name
+      );
+    } catch (err) {
+      console.log("Storage Services :: error updating file ", err);
+      throw err;
+    }
+  }
   async uploadFile(file: File) {
     try {
       return await this.bucket.createFile(
@@ -116,6 +128,9 @@ class DatabaseService {
     return this.bucket.getFilePreview(config.appwrite_image_bucket_id, fileId);
   }
 
+  getUserProfile(fileId: string) {
+    return this.bucket.getFilePreview(config.appwrite_image_bucket_id, fileId);
+  }
   async deleteFile(fileId: string): Promise<boolean> {
     try {
       await this.bucket.deleteFile(config.appwrite_image_bucket_id, fileId);
